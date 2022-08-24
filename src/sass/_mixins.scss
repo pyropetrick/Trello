@@ -1,0 +1,88 @@
+@mixin flexDir($direction) {
+	display: flex;
+	flex-direction: $direction;
+}
+
+@mixin flexX($justCont) {
+	display: flex;
+	justify-content: $justCont;
+}
+@mixin flexY($align) {
+	display: flex;
+	align-items: $align;
+}
+
+@mixin flexXY($justCont, $align) {
+	display: flex;
+	justify-content: $justCont;
+	align-items: $align
+}
+
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin transitionAll {
+    transition: all .3s  ease-in-out;
+}
+
+
+@mixin textUpCenter($textUp,$textCenter) {
+    text-transform: $textUp;
+    text-align: $textCenter;
+}
+
+@mixin flex($justCont, $align, $direct) {
+    display: flex;
+    justify-content: $justCont;
+    flex-direction: $direct;
+    align-items: $align;
+}
+
+@mixin fontSize($count) {
+    font-size: calc($count / 16) + rem;
+}
+@mixin LineHeight($count) {
+	line-height: calc($count / 16) + rem;
+}
+
+
+@mixin fontStyle($fontFam, $fontWh, $size) {
+    font-family: $fontFam;
+    font-weight: $fontWh;
+    @include fontSize($size)
+}
+
+
+@mixin container {
+	width: var(--large-container);
+	margin: 0 auto;
+	padding: 0 15px;
+
+	@media (max-width: 1200px) {
+		width: 1024px;
+	}
+
+	@media (max-width: 768px) {
+		width: 771px;
+	}
+
+	@media (max-width: 601px) {
+		width: 100%;
+	}
+}
+
+
+@mixin mediaTablet {
+	@media screen and (max-width: 1199px) {
+		@content;
+	}
+}
+
+@mixin mediaMobile {
+	@media screen and (max-width: 1023px) {
+		@content;
+	}
+}
