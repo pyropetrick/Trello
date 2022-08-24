@@ -1,0 +1,88 @@
+.item-todo {
+    border: 2px solid black;
+    border-radius: 15px;
+    background-color: greenyellow;
+    width: 300px;
+    padding: 15px;
+    padding-bottom: 5px;
+    @include flexDir(column);
+    gap: 15px 0;
+
+    &__header {
+        @include flexX(space-between);
+        border: 2px solid black;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+        
+    &__button-add-todo {
+        background-color: rgba(greenyellow, 1.0);
+        border-radius: 8px;
+        width: 100%;
+        @include transitionAll;
+        &:hover {
+            cursor: pointer;
+            background-color: grey;
+        }
+    }
+    
+    
+
+}
+
+.tasks-list {
+    @include flexDir(column);
+    gap: 10px 0;
+    overflow-y: auto;
+
+    &__item {
+        @include flexX(space-between);
+        border: 2px solid black;
+        border-radius: 5px;
+        padding: 5px;
+
+        &-titles {
+            @include flexDir(column);
+            gap: 15px;
+        }
+
+        &-actions {
+            @include flexDir(column);
+            gap: 15px;
+            &-editing {
+                display: flex;
+                gap: 5px;
+            }
+            &-edit {
+                @include fontSize(12);
+                @include transitionAll;
+                &:hover {
+                    cursor: pointer;
+                    background-color: grey;
+                }
+            }
+            &-delete {
+                @include fontSize(12);
+                @include transitionAll;
+                &:hover {
+                    cursor: pointer;
+                    background-color: grey;
+                }
+                
+            }
+            &-jump {
+                align-self: flex-end;
+                padding: 2px;
+                @include transitionAll;
+                &:hover {
+                    cursor: pointer;
+                    background-color: grey;
+                }
+            }
+            &-time {
+                align-self: flex-end;
+            }
+        }
+    }
+}
