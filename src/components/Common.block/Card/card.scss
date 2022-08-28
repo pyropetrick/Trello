@@ -1,7 +1,7 @@
 .item-todo {
     border: 2px solid black;
     border-radius: 15px;
-    background-color: greenyellow;
+    background-color: $secondary;
     width: 300px;
     padding: 15px;
     padding-bottom: 5px;
@@ -11,13 +11,14 @@
     &__header {
         @include flexX(space-between);
         border: 2px solid black;
+        background-color: $greenColor;
         border-radius: 10px;
         padding: 10px;
     }
 
         
     &__button-add-todo {
-        background-color: rgba(greenyellow, 1.0);
+        background-color: rgba($buttonColor, 1.0);
         border-radius: 8px;
         width: 100%;
         @include transitionAll;
@@ -39,6 +40,7 @@
     &__item {
         @include flexX(space-between);
         border: 2px solid black;
+        background-color: $greenColor;   
         border-radius: 5px;
         padding: 5px;
 
