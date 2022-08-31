@@ -15,6 +15,9 @@
 
 // header
 @import '../components/Common.block/header/header';
+
+// home section 
+@import './blocks/home.scss';
 // card
 @import '../components/Common.block/Card/card';
 @import '../components/Common.block/modal/modal.scss';
