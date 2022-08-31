@@ -1,0 +1,53 @@
+.modal {
+    &__wrapper {
+    border: 1px solid rgb(35, 185, 95);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px;
+    width: 500px;
+    margin: 0 auto;
+    background-color: #d8f2da;
+    }
+
+    &__title {
+        border: 1px solid black;
+        border-radius: 5px;
+        background-color: white;
+        width: 200px;
+        font: 1em sans-serif;
+        text-align: center;
+        margin: 15px 5px;
+        padding: 5px;
+    }
+
+    &__descr {
+        border: 1px solid black;
+        border-radius: 20px;
+        background-color: white;
+        width: 400px;
+        height: 100px;
+        font: 1em sans-serif;
+        text-align: center;
+        margin: 0 5px 30px;
+        padding: 40px;
+    }
+
+    &__item {
+        display: flex;
+        margin: 0 5px;
+    }
+
+    &__but {
+        display: flex;
+        margin: 0 50px;
+    }
+}
+
+select {
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+    padding: 0 40px;
+    margin: 0 5px;
+}
