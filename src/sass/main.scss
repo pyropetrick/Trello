@@ -11,10 +11,8 @@
 // reset + standart style
 @import './adjustments';
 
-
-// Blocks
-@import './btns';
-
+//button
+@import '../sass/btns';
 
 // card
 @import '../components/Common.block/Card/card';
