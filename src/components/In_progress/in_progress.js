@@ -5,16 +5,10 @@ const render = document.querySelector('.render');
 
 let todo = [];
 
-// let date = new Date();
-// let newDate =  new Intl.DateSTimeFormat('en-EU',{
-//     year: '2-digit', month: 'short', day: 'short',
-//     hour: 'numeric', minute: 'numeric', second: 'numeric',
-// } );
-
-// console.log(newDate.format(date))
-
-
-
+const options =  {
+    year: '2-digit', month: '2-digit', day: '2-digit',
+    hour: 'numeric', minute: 'numeric'
+}
 
 
 
@@ -70,7 +64,8 @@ function renderFromToDo () {
 
     const dateSpan = document.createElement('span');
     dateSpan.classList.add('card-item__footer-user-date');
-    dateSpan.textContent = `date: `
+    dateSpan.innerText = `${new Intl.DateTimeFormat('en-US', options).format(new Date())}`;
+
 
 
     btnWrapper.append(btnBack);
@@ -93,7 +88,10 @@ function renderFromToDo () {
     inProgressList.append(cardItem);
 }
 
+function init () {
+    renderFromToDo();
+}
 
-render.addEventListener('click', renderFromToDo);
+render.addEventListener('click', init);
 
 
