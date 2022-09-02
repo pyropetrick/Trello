@@ -34,7 +34,7 @@ input[type=title] {
     border-radius: 5px;
     background-color: white;
     width: 200px;
-    font: 1em sans-serif;
+    @include fontSize (1px);
     text-align: center;
     margin: 15px 5px;
     padding: 5px;
@@ -46,7 +46,7 @@ input[type=text] {
     background-color: white;
     width: 400px;
     height: 100px;
-    font: 1em sans-serif;
+    @include fontSize (1px);
     text-align: center;
     margin: 0 5px 30px;
     padding: 40px;
@@ -65,7 +65,7 @@ input[type=text] {
 
     &__text {
         text-align: center;
-        font: 1em sans-serif;
+        @include fontSize (1px);
         font-weight: bold;
     }
 
@@ -89,7 +89,7 @@ input[type=text] {
 
     &__title {
         text-align: center;
-        font: 1em sans-serif;
+        @include fontSize (1px);
         margin: auto 0;
     }
 
@@ -106,7 +106,7 @@ input[type=text] {
     &__time {
         text-align: center;
         padding: 13px;
-        font: 1em sans-serif;
+        @include fontSize (1px);
         color: #545454;
     }
 }

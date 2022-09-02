@@ -1,4 +1,4 @@
-import{renderEdit, renderDelete, renderConfirm} from '../modal/modal'
+import{editItem, deleteItem , renderConfirm} from '../modal/modal'
 let btnAddTodo = document.querySelector('.item-todo__button-add-todo');
 
 function renderTodo() {
@@ -43,12 +43,12 @@ function renderTodo() {
     const btnEdit = document.createElement('button');
     btnEdit.classList.add('tasks-list__item-actions-edit');
     btnEdit.innerHTML = 'Edit';
-    btnEdit.addEventListener('click', renderEdit);
+    btnEdit.addEventListener('click', editItem);
 
     const btnDelete = document.createElement('button');
     btnDelete.classList.add('tasks-list__item-actions-delete');
     btnDelete.innerHTML = 'Delete';
-    btnDelete.addEventListener('click', renderDelete);
+    btnDelete.addEventListener('click', deleteItem);
 
     const btnJump = document.createElement('button');
     btnJump.classList.add('tasks-list__item-actions-jump');
