@@ -19,6 +19,14 @@ function addTodo() {
     renderTodo();
 }
 
+function deleteCard({target}) {
+    const card = target.parentNode.parentNode.parentNode
+    const cardId = +card.getAttribute('id');
+    const cardIdx = todos.findIndex(({id}) => id === cardId);
+    todos.splice(cardIdx, 1);
+    renderTodo();
+}
+
 
 function renderCounter() {
     const counter = document.querySelector('.item-todo__header-counter');
@@ -75,6 +83,7 @@ function renderTodo(list = todos) {
         const btnDelete = document.createElement('button');
         btnDelete.classList.add('tasks-list__item-actions-delete');
         btnDelete.innerHTML = 'Delete';
+        btnDelete.addEventListener('click', deleteCard);
 
         const btnJump = document.createElement('button');
         btnJump.classList.add('tasks-list__item-actions-jump');
