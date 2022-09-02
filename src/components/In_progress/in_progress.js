@@ -1,5 +1,3 @@
-'use strict'
-
 const backButton = document.querySelector('.card-item__btn-back');
 const completeButton = document.querySelector('.card-item__btn-complt');
 const counter = document.querySelector('.header__counter');
