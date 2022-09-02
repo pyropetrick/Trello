@@ -82,4 +82,6 @@ function renderFromToDo () {
 }
 
 
-render.addEventListener('click', addTodoFrom);
+render.addEventListener('click', renderFromToDo);
+
+
