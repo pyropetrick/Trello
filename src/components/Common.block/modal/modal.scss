@@ -75,38 +75,3 @@ input[type=text] {
     }
 }
 
-.trello {
-    &__block {
-        display: flex;
-        border: 1px solid rgb(199 175 219);
-        border-radius: 20px;
-        padding: 30px 40px;
-        margin: 0 auto;
-        background-color: rgb(215 200 229 / 67%);
-        width: 800px;
-        height: 125px;
-    }
-
-    &__title {
-        text-align: center;
-        @include fontSize (1px);
-        margin: auto 0;
-    }
-
-    &__frame {
-        border: 1px solid #a9a9a9;
-        border-radius: 5px;
-        background-color: white;
-        width: 100px;
-        height: 45px;
-        margin-left: auto;
-        margin-top: 10px;
-    }
-
-    &__time {
-        text-align: center;
-        padding: 13px;
-        @include fontSize (1px);
-        color: #545454;
-    }
-}
