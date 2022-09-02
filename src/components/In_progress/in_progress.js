@@ -1,6 +1,5 @@
-const backButton = document.querySelector('.card-item__btn-back');
+const backButton = document.querySelector('.card-item__btn-back')
 const completeButton = document.querySelector('.card-item__btn-complt');
-const counter = document.querySelector('.header__counter');
 const render = document.querySelector('.render');
 
 let todo = [];
@@ -10,7 +9,15 @@ const options =  {
     hour: 'numeric', minute: 'numeric'
 }
 
+let count = 1;
 
+function addCounter(){
+    const counter = document.querySelector('.header__counter');
+    counter.innerText = count++;
+    if (count > 6){
+        alert('Are you sure, you want to add ToDo?')
+    }
+}
 
 
 function renderFromToDo () {
@@ -90,8 +97,10 @@ function renderFromToDo () {
 
 function init () {
     renderFromToDo();
+    addCounter();
 }
 
 render.addEventListener('click', init);
+
 
 
