@@ -1,4 +1,4 @@
-import{renderEdit, renderDelete, renderConfirm} from '../modal/modal'
+import {renderEdit, renderDelete} from '../modal/modal'
 let btnAddTodo = document.querySelector('.item-todo__button-add-todo');
 
 function renderTodo() {
