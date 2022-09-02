@@ -11,11 +11,12 @@
 // reset + standart style
 @import './adjustments';
 
-
-// Blocks
+//button
+@import '../sass/btns';
 
 // card
 @import '../components/Common.block/Card/card';
+@import '../components/Common.block/modal/modal.scss';
 
 //in progress
 @import '../components/In_progress/in-progress';
