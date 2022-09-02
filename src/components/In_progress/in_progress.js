@@ -5,6 +5,18 @@ const render = document.querySelector('.render');
 
 let todo = [];
 
+// let date = new Date();
+// let newDate =  new Intl.DateSTimeFormat('en-EU',{
+//     year: '2-digit', month: 'short', day: 'short',
+//     hour: 'numeric', minute: 'numeric', second: 'numeric',
+// } );
+
+// console.log(newDate.format(date))
+
+
+
+
+
 
 
 function renderFromToDo () {
@@ -58,7 +70,7 @@ function renderFromToDo () {
 
     const dateSpan = document.createElement('span');
     dateSpan.classList.add('card-item__footer-user-date');
-    // dateSpan.textContent = `date:${dateNow}`
+    dateSpan.textContent = `date: `
 
 
     btnWrapper.append(btnBack);
