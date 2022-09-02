@@ -10,7 +10,7 @@ function addTodo() {
     }
     let todo = {
         id: Date.now(),
-        title: '',
+        titleTask: '',
         description: '',
         time: date.toLocaleString('ru', options)
     }
@@ -18,12 +18,21 @@ function addTodo() {
     todos.push(todo);
     renderTodo();
 }
+
+
+function renderCounter() {
+    const counter = document.querySelector('.item-todo__header-counter');
+    counter.innerHTML = todos.length;
+    
+}
+
 function renderTodo(list = todos) {
     const tasksList = document.querySelector('.tasks-list');
     tasksList.innerHTML = '';
-    list.forEach(todo => {
+    list.forEach(({id, titleTask, description, time}) => {
         const task = document.createElement('li');
         task.classList.add('tasks-list__item');
+        task.setAttribute('id', id);
 
         // titles 
         const titlesBlock = document.createElement('div');
@@ -33,18 +42,18 @@ function renderTodo(list = todos) {
 
         const title = document.createElement('p');
         title.classList.add('tasks-list__item-title');
-        title.innerText = 'Title';
+        title.innerText = titleTask;
 
         // desc
 
         const desc = document.createElement('p');
         desc.classList.add('tasks-list__item-desc');
-        desc.innerText = 'Description';
+        desc.innerText = description;
 
         // user 
         const user = document.createElement('p');
         user.classList.add('tasks-list__item-user');
-        user.innerText = 'User';
+        user.innerText = '';
 
         // actions 
 
@@ -74,9 +83,9 @@ function renderTodo(list = todos) {
 
         // time 
 
-        const time = document.createElement('p');
-        time.classList.add('tasks-list__item-actions-time');
-        time.innerHTML = todo.time;
+        const timeCreate = document.createElement('p');
+        timeCreate.classList.add('tasks-list__item-actions-time');
+        timeCreate.innerHTML = time;
 
         // composite to list
 
@@ -91,7 +100,7 @@ function renderTodo(list = todos) {
         editBlock.append(btnDelete);
         actionsBlock.append(editBlock);
         actionsBlock.append(btnJump);
-        actionsBlock.append(time);
+        actionsBlock.append(timeCreate);
         
         // task 
         task.append(titlesBlock);
@@ -99,8 +108,11 @@ function renderTodo(list = todos) {
 
         // list 
         tasksList.append(task);
-        })// task
 
+        })
+
+        
+    renderCounter();
 }
 
 btnAddTodo.addEventListener('click', addTodo);

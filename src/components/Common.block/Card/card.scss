@@ -37,6 +37,14 @@
     @include flexDir(column);
     gap: 10px 0;
     overflow-y: auto;
+    padding: 0 5px;
+
+    &::-webkit-scrollbar {
+        width: 2px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: black;
+    }
 
     &__item {
         @include flexX(space-between);
