@@ -1,22 +1,25 @@
-import{editItem, deleteItem , renderConfirm} from '../modal/modal'
-let btnAddTodo = document.querySelector('.item-todo__button-add-todo');
+import{
+    showEditMenu,  
+    showWarning, 
+    modalTitle, 
+    modalDesc,
+    modalWrapper,
+    modalBtnConfirm,
+
+} from '../modal/modal'
+
+const btnAddTodo = document.querySelector('.item-todo__button-add-todo');
 const todos = [];
 
 function addTodo() {
-    let date = new Date();
-    let options = {
-        hour: 'numeric',
-        minute: 'numeric',
-    }
-    let todo = {
-        id: Date.now(),
-        titleTask: '',
-        description: '',
-        time: date.toLocaleString('ru', options)
+
+    if (todos.length >= 6) {
+        showWarning('Вы пытаетесь добавить больше 6 карточек, удалить первую?');
+    } else {
+        showEditMenu();
     }
 
-    todos.push(todo);
-    renderTodo();
+    
 }
 
 function deleteCard({target}) {
@@ -27,6 +30,11 @@ function deleteCard({target}) {
     renderTodo();
 }
 
+function onEdit({target}) {
+
+    
+    showEditMenu();
+}
 
 function renderCounter() {
     const counter = document.querySelector('.item-todo__header-counter');
@@ -41,6 +49,7 @@ function renderTodo(list = todos) {
         const task = document.createElement('li');
         task.classList.add('tasks-list__item');
         task.setAttribute('id', id);
+        task.setAttribute('draggable', true);
 
         // titles 
         const titlesBlock = document.createElement('div');
@@ -78,7 +87,7 @@ function renderTodo(list = todos) {
         const btnEdit = document.createElement('button');
         btnEdit.classList.add('tasks-list__item-actions-edit');
         btnEdit.innerHTML = 'Edit';
-        btnEdit.addEventListener('click', editItem);
+        btnEdit.addEventListener('click', onEdit);
 
         const btnDelete = document.createElement('button');
         btnDelete.classList.add('tasks-list__item-actions-delete');
@@ -123,4 +132,24 @@ function renderTodo(list = todos) {
     renderCounter();
 }
 
+function confirmEdit()  {
+    let options = {
+        hour: 'numeric',
+        minute: 'numeric',
+        }
+    let date = new Date();
+    let todo = {
+        id: Date.now(),
+        titleTask: modalTitle.value,
+        description: modalDesc.value,
+        time: date.toLocaleString('ru', options)
+    }
+    todos.push(todo);
+    renderTodo();
+    modalWrapper.classList.remove('active');
+    modalTitle.value = '';
+    modalDesc.value = '';
+}
+
 btnAddTodo.addEventListener('click', addTodo);
+modalBtnConfirm.addEventListener('click', confirmEdit);

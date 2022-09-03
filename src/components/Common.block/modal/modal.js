@@ -1,30 +1,37 @@
-const modalBtnConfirm = document.querySelector('.button2');
-const modalBtnCancel = document.querySelector('.button1');
-const modalWrapper = document.querySelector('.modal__wrapper');
-const userList = document.querySelector('.user__list');
-const tasksList = document.querySelector('.tasks-list');
+
+
+export const modalTitle = document.querySelector('.modal__input-title');
+export const modalDesc = document.querySelector('.modal__input-description ');
+export const modalBtnConfirm = document.querySelector('.modal__btn-confirm');
+export const modalBtnCancel = document.querySelector('.modal__btn-cancel');
+export const modalWrapper = document.querySelector('.modal__wrapper');
 
 
 
-export const editItem = () => {
-    modalWrapper.style.display = "flex";
+
+
+
+export const showEditMenu = () => {
+    modalWrapper.classList.add('active');
 }
 
-export const deleteItem = (event) => {
-    if (!event.target.classList.contains('tasks-list__item-actions-delete')) {
-        return;
-    }
 
-    let taskListItem = event.target.parentNode.parentNode.parentNode;
-    tasksList.removeChild(taskListItem);     
+export const onCancel = () => {
+    modalWrapper.classList.remove('active');
+    modalDesc.value = '';
+    modalTitle.value = '';
 }
 
-export const renderConfirm = () => {
-    modalWrapper.style.display = "none";
-}
 
-export const renderCancel = () => {
-    modalWrapper.style.display = "none";
+modalBtnCancel.addEventListener('click', onCancel);
+
+
+export const showWarning = (text) => {
+    const warning = document.querySelector('.warning');
+    const textWarning = warning.querySelector('.warning__text');
+    textWarning.innerText = text;
+    warning.style.display = 'flex';
+    
 }
 
 export const retrieveUserList = () => {

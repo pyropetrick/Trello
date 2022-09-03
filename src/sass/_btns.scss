@@ -1,39 +1,9 @@
-.button1{
-    border: 1px solid black;
-    border-radius: 5px;
-    background-color: white;
-    padding: 5px 15px;
-    margin: 0 10px;
-    &:hover {
-        background-color: red;
-    }
-}
-
-.button2 {
-    border: 1px solid black;
-    border-radius: 5px;
-    background-color: white;
-    padding: 5px 15px;
-    &:hover {
-        background-color: rgb(55, 193, 55);
-    }
-}
-
-.warning__btn {
+.action-button {
     border: 1px solid black;
     border-radius: 5px;
     background-color: white;
     padding: 5px 15px;
     width: 90px;
     height: 25px;
-}
 
-.warning__bttn {
-    border: 1px solid black;
-    border-radius: 5px;
-    background-color: white;
-    padding: 5px 15px;
-    margin: 0 10px;
-    width: 90px;
-    height: 25px;
 }
