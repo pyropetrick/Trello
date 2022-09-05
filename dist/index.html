@@ -10,55 +10,63 @@
     <title>Trello</title>
 </head>
 <body>
-    <div class="item-todo">
+    <div class="header">
+    <div class="container">
+        <div class="header__logo">
+            <a href="#" class="header__logo-link">
+                <object data="/icon.72027e14.svg" width="100px"></object>
+            </a>
+        </div>
+        <div class="header__time-frame">
+            <div class="header__time">12:32</div>
+        </div>
+    </div>
+</div>
+    <section class="home">
+        <div class="container">
+            <div class="trello-list-cards">
+                <div class="item-todo">
     <div class="item-todo__header">
         <h2 class="item-todo__header-title">TODO:</h2>
-        <p class="item-todo__header-counter">2</p>
+        <p class="item-todo__header-counter"></p>
     </div>
     <ul class="item-todo__task-list tasks-list">
-        <!-- <li class="tasks-list__item">
-            <div class="tasks-list__item-titles">
-                <p class="tasks-list__item-title">Title</p>
-                <p class="tasks-list__item-desc">Description</p>
-                <p class="tasks-list__item-user">User</p>
-            </div>
-            <div class="tasks-list__item-actions">
-                <div class="tasks-list__item-actions-editing">
-                    <button class="tasks-list__item-actions-edit">Edit</button>
-                    <button class="tasks-list__item-actions-delete">Delete</button>
-                </div>
-                <button class="tasks-list__item-actions-jump"> > </button>
-                <p class="tasks-list__item-actions-time">Time</p>   
-            </div>
-        </li> -->
     </ul>
     <button class="item-todo__button-add-todo">Add todo</button>
     
 </div>
+            </div>
+        </div>
+    </section>
+    
+    
+
+    
     <div class="modal__wrapper">
     <form>
-        <input type="title" placeholder="Title">
-        <input type="text" placeholder="Description">
+        <input class="modal__input-title" type="title" placeholder="Title">
+        <input class="modal__input-description" type="text" placeholder="Description">
     </form>
         <div class="modal__item">
             <select name="list">
                 <option value="user">Select user</option>
             </select>
             <div class="modal__buttons">
-                <button class="modal__btn action-button">Cancel</button>
-                <button class="modal__bttn action-button">Confirm</button>
+                <button class="modal__btn-cancel action-button">Cancel</button>
+                <button class="modal__btn-confirm action-button">Confirm</button>
             </div>
         </div>
  </div>
 
 <div class="warning">
     <h3 class="warning__text">Warning!</h3>
-    <div class="warning__but">
-        <button class="warning__btn action-button">Cancel</button>
-        <button class="warning__bttn action-button">Confirm</button>
+    <div class="warning__actions">
+        <button class="warning__btn-cancel action-button">Cancel</button>
+        <button class="warning__btn-confirm action-button">Confirm</button>
     </div>
 </div>
 
+<<<<<<< HEAD
 <div class="trello__block">
     <h3 class="trello__title">Trello</h3>
     <div class="trello__frame">
@@ -97,6 +105,12 @@
 <button class="render">render</button>
 
 
+=======
+
+
+    <script src="/index.4eb510cd.js" defer=""></script>
+    <script src="./components/Common.block/modal/modal.js" defer=""></script>
+>>>>>>> origin/common-style
     <script src="/index.39feea23.js" defer=""></script>
     <script src="/index.22a7f9ba.js" defer=""></script>
     <script src="/index.18dbc454.js" defer=""></script>

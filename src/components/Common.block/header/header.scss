@@ -1,0 +1,30 @@
+.header {
+    padding-top: 10px;
+    position: absolute;
+    width: 100%;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 2px solid $darkColor;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    &__time-frame {
+        border: 1px solid #a9a9a9;
+        border-radius: 5px;
+        background-color: white;
+        width: 100px;
+        height: 45px;
+    }
+    &__time {
+        text-align: center;
+        padding: 10px;
+        @include fontSize(20);
+        font-weight: bold;
+        color: $darkColor;
+    }
+}
+    

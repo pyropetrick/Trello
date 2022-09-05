@@ -1,0 +1,6 @@
+.home {
+    height: 100vh;
+    @include flexY(center);
+
+    background-color: grey;
+}
