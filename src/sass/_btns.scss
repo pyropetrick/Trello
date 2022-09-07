@@ -1,16 +1,22 @@
-.modal__btn {
+.button1{
     border: 1px solid black;
     border-radius: 5px;
     background-color: white;
     padding: 5px 15px;
     margin: 0 10px;
+    &:hover {
+        background-color: red;
+    }
 }
 
-.modal__bttn {
+.button2 {
     border: 1px solid black;
     border-radius: 5px;
     background-color: white;
     padding: 5px 15px;
+    &:hover {
+        background-color: rgb(55, 193, 55);
+    }
 }
 
 .warning__btn {

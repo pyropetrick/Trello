@@ -66,6 +66,7 @@ function renderTodo(list = todos) {
         const btnDelete = document.createElement('button');
         btnDelete.classList.add('tasks-list__item-actions-delete');
         btnDelete.innerHTML = 'Delete';
+        btnDelete.addEventListener('click', deleteItem);
 
         const btnJump = document.createElement('button');
         btnJump.classList.add('tasks-list__item-actions-jump');
