@@ -18,8 +18,14 @@ function addTodo() {
     } else {
         showEditMenu();
     }
+}
 
-    
+function randomRGB() {
+    const r = Math.floor(Math.random() * (256)),
+          g = Math.floor(Math.random() * (256)),
+          b = Math.floor(Math.random() * (256)),
+          color = `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`;
+    return color
 }
 
 function deleteCard({target}) {
@@ -45,11 +51,12 @@ function renderCounter() {
 function renderTodo(list = todos) {
     const tasksList = document.querySelector('.tasks-list');
     tasksList.innerHTML = '';
-    list.forEach(({id, titleTask, description, time}) => {
+    list.forEach(({id, titleTask, description, time, colorItem}) => {
         const task = document.createElement('li');
         task.classList.add('tasks-list__item');
         task.setAttribute('id', id);
         task.setAttribute('draggable', true);
+        task.style.background = colorItem;
 
         // titles 
         const titlesBlock = document.createElement('div');
@@ -138,12 +145,15 @@ function confirmEdit()  {
         minute: 'numeric',
         }
     let date = new Date();
+    let color = randomRGB();
     let todo = {
         id: Date.now(),
         titleTask: modalTitle.value,
         description: modalDesc.value,
-        time: date.toLocaleString('ru', options)
+        time: date.toLocaleString('ru', options),
+        colorItem: color,
     }
+
     todos.push(todo);
     renderTodo();
     modalWrapper.classList.remove('active');
