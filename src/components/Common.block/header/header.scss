@@ -3,6 +3,7 @@
     position: absolute;
     width: 100%;
 
+
     .container {
         display: flex;
         justify-content: space-between;
@@ -10,8 +11,42 @@
         border: 2px solid $darkColor;
         border-radius: 5px;
         padding: 10px;
+        background-color: #ececec;
     }
+    &__logo {
+        &-link {
+            //width: 36px;
+            //height: 36px;
+            @include flexY(center);
+            gap: 0 10px;
 
+
+        }
+        &-title {
+            font-weight: 600;
+
+            font-family: $rampart;
+            @include fontSize(25);
+            letter-spacing: 1px;
+            transition: all .2s ease-in-out;
+            &:hover {
+                cursor: pointer;
+                font-weight: 100;
+            }
+
+
+        }
+        &-svg {
+            width: 32px;
+            height: 32px;
+            fill: #0079bf;
+            &:hover {
+                cursor: pointer;
+
+
+            }
+        }
+    }
     &__time-frame {
         border: 1px solid #a9a9a9;
         border-radius: 5px;
@@ -22,8 +57,9 @@
     &__time {
         text-align: center;
         padding: 10px;
-        @include fontSize(20);
+        @include fontSize(19);
         font-weight: bold;
+        font-family: $roboto;
         color: $darkColor;
     }
 }
