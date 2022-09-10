@@ -1,4 +1,7 @@
 .home {
     height: 100vh;
     @include flexY(center);
+
+    background-color: #f4f4f4;
+    font-family: $roboto;
 }

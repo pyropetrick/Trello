@@ -1,23 +1,32 @@
 .modal {
     &__wrapper {
-    border: 1px solid rgb(35, 185, 95);
+    border: 1px solid rgb(35, 185, 95); 
     border-radius: 20px;
     display: none;
     flex-direction: column;
     padding: 20px 40px;
     width: 500px;
-    margin: 0 auto;
-    background-color: #d8f2da;
+    background-color: rgba(#d8f2da, .5);
+
+    position: absolute;
+    top: 30%;
+    left: 27%;
+    &.active {
+        display: flex;
     }
+    
+    }
+    
 
     &__item {
         display: flex;
         margin: 0 5px;
     }
 
-    &__but {
+    &__buttons {
         display: flex;
         margin: 0 50px;
+        gap: 0 10px;
     }
 }
 
@@ -29,24 +38,24 @@ select {
     margin: 0 5px;
 }
 
-input[type=title] {
+.modal__input-title {
     border: 1px solid black;
     border-radius: 5px;
     background-color: white;
     width: 200px;
-    @include fontSize (1px);
+    @include fontSize(16);
     text-align: center;
     margin: 15px 5px;
     padding: 5px;
 }
 
-input[type=text] {
+.modal__input-description {
     border: 1px solid black;
     border-radius: 20px;
     background-color: white;
     width: 400px;
     height: 100px;
-    @include fontSize (1px);
+    @include fontSize(16);
     text-align: center;
     margin: 0 5px 30px;
     padding: 40px;
@@ -58,55 +67,28 @@ input[type=text] {
     border-radius: 20px;
     padding: 30px 40px;
     width: 500px;
-    margin: 50px auto;
     background-color: #d8f2da;
     width: 300px;
     height: 150px;
+    flex-direction: column;
+    gap: 25px 0;
+
+    position: absolute;
+    top: 40%;
+    left: 50%;
 
     &__text {
         text-align: center;
-        @include fontSize (1px);
+        @include fontSize(16);
         font-weight: bold;
     }
 
-    &__but {
+    &__actions {
         display: flex;
-        margin: 50px 30px;
+        justify-content: center;
+        align-items: center;
+        gap: 0 10px;
+        
     }
 }
 
-.trello {
-    &__block {
-        display: flex;
-        border: 1px solid rgb(199 175 219);
-        border-radius: 20px;
-        padding: 30px 40px;
-        margin: 0 auto;
-        background-color: rgb(215 200 229 / 67%);
-        width: 800px;
-        height: 125px;
-    }
-
-    &__title {
-        text-align: center;
-        @include fontSize (1px);
-        margin: auto 0;
-    }
-
-    &__frame {
-        border: 1px solid #a9a9a9;
-        border-radius: 5px;
-        background-color: white;
-        width: 100px;
-        height: 45px;
-        margin-left: auto;
-        margin-top: 10px;
-    }
-
-    &__time {
-        text-align: center;
-        padding: 13px;
-        @include fontSize (1px);
-        color: #545454;
-    }
-}

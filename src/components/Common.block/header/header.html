@@ -2,15 +2,22 @@
     <div class="container">
         <div class="header__logo">
             <a href="#" class="header__logo-link">
-                <object
-                data="./images/icons/icon.svg"
-                width="100px" ></object>
+                <svg width="0" height="0" class="hidden">
+                    <symbol xmlns="http://www.w3.org/2000/svg" aria-label="Trello" role="img" viewBox="0 0 512 512" id="trello_icon_130813">
+                        <rect width="512" height="512" rx="15%"></rect>
+                        <rect height="188" rx="23" width="132" x="284" y="95" fill='#fff'></rect>
+                        <rect height="296" rx="23" width="132" x="97" y="95" fill='#fff'></rect>
+                    </symbol>
+                </svg>
+                <svg class="header__logo-svg">
+                    <use xlink:href="#trello_icon_130813"></use>
+                </svg>
+                <p class='header__logo-title'>Trello</p>
             </a>
-            
+
         </div>
-        <div class="nav">
-    
+        <div class="header__time-frame">
+            <div class="header__time">12:32</div>
         </div>
     </div>
-    
 </div>
