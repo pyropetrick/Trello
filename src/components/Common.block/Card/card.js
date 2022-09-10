@@ -164,7 +164,5 @@ function confirmEdit()  {
 btnAddTodo.addEventListener('click', addTodo);
 modalBtnConfirm.addEventListener('click', confirmEdit);
 
-const rect = document.querySelector('svg')
-console.log(rect.children)
 
 
