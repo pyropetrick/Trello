@@ -163,3 +163,6 @@ function confirmEdit()  {
 
 btnAddTodo.addEventListener('click', addTodo);
 modalBtnConfirm.addEventListener('click', confirmEdit);
+
+
+
