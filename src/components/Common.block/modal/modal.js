@@ -11,6 +11,7 @@ export const modalWrapper = document.querySelector('.modal__wrapper');
 
 
 
+
 export const showEditMenu = () => {
     modalWrapper.classList.add('active');
 }
