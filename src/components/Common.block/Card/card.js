@@ -43,7 +43,6 @@ function onEdit({target}) {
     modalTitle.value = title;
     modalDesc.value = desc;
     actionAdd = false;
-    console.log(currentTaskEditId)
     showEditMenu();
 
 }
@@ -168,7 +167,6 @@ function confirmAdd()  {
         todos[currentTaskIdx].titleTask = modalTitle.value;
         todos[currentTaskIdx].description = modalDesc.value;
     }
-    console.log(todos);
     renderTodo();
     modalWrapper.classList.remove('active');
     modalTitle.value = '';
