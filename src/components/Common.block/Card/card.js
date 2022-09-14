@@ -144,7 +144,7 @@ function renderTodo(list = todos) {
     renderCounter();
 }
 
-function confirmAdd()  {
+function onConfirm()  {
     if (actionAdd) {
         let options = {
             hour: 'numeric',
@@ -174,7 +174,7 @@ function confirmAdd()  {
 }
 
 btnAddTodo.addEventListener('click', addTodo);
-modalBtnConfirm.addEventListener('click', confirmAdd);
+modalBtnConfirm.addEventListener('click', onConfirm);
 
 
 
