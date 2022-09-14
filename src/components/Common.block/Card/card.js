@@ -8,16 +8,14 @@ import{
 
 } from '../modal/modal'
 
+let actionAdd = false;
+let currentTaskEditId = 0;
 const btnAddTodo = document.querySelector('.item-todo__button-add-todo');
 const todos = [];
 
 function addTodo() {
-
-    if (todos.length >= 6) {
-        showWarning('Вы пытаетесь добавить больше 6 карточек, удалить первую?');
-    } else {
-        showEditMenu();
-    }
+    actionAdd = true;
+    showEditMenu();
 }
 
 function randomRGB() {
@@ -37,9 +35,17 @@ function deleteCard({target}) {
 }
 
 function onEdit({target}) {
-
-    
+    const item = target.parentNode.parentNode.parentNode;
+    const itemId = +item.getAttribute('id');
+    currentTaskEditId = itemId;
+    const title = item.querySelector('.tasks-list__item-title').innerHTML;
+    const desc = item.querySelector('.tasks-list__item-desc').innerHTML;
+    modalTitle.value = title;
+    modalDesc.value = desc;
+    actionAdd = false;
+    console.log(currentTaskEditId)
     showEditMenu();
+
 }
 
 function renderCounter() {
@@ -139,22 +145,30 @@ function renderTodo(list = todos) {
     renderCounter();
 }
 
-function confirmEdit()  {
-    let options = {
-        hour: 'numeric',
-        minute: 'numeric',
+function confirmAdd()  {
+    if (actionAdd) {
+        let options = {
+            hour: 'numeric',
+            minute: 'numeric',
         }
-    let date = new Date();
-    let color = randomRGB();
-    let todo = {
-        id: Date.now(),
-        titleTask: modalTitle.value,
-        description: modalDesc.value,
-        time: date.toLocaleString('ru', options),
-        colorItem: color,
-    }
+        let date = new Date();
+        let color = randomRGB();
+        let todo = {
+            id: Date.now(),
+            titleTask: modalTitle.value,
+            description: modalDesc.value,
+            time: date.toLocaleString('ru', options),
+            colorItem: color,
+        }
 
-    todos.push(todo);
+        todos.push(todo);
+
+    } else {
+        let currentTaskIdx = todos.findIndex(task => task.id === currentTaskEditId)
+        todos[currentTaskIdx].titleTask = modalTitle.value;
+        todos[currentTaskIdx].description = modalDesc.value;
+    }
+    console.log(todos);
     renderTodo();
     modalWrapper.classList.remove('active');
     modalTitle.value = '';
@@ -162,7 +176,8 @@ function confirmEdit()  {
 }
 
 btnAddTodo.addEventListener('click', addTodo);
-modalBtnConfirm.addEventListener('click', confirmEdit);
+modalBtnConfirm.addEventListener('click', confirmAdd);
+
 
 
 
