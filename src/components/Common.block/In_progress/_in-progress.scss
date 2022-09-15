@@ -124,3 +124,18 @@
         }
     }
 }
+
+// delete all
+
+.delete-all__btn {
+    background-color: rgba(#f4f4f4, 1.0);
+    border-radius: 8px;
+    width: 100%;
+    font-weight: 500;
+    text-transform: capitalize;
+    @include transitionAll;
+    &:hover {
+        cursor: pointer;
+        background-color: #a0a0a0;
+    }
+}

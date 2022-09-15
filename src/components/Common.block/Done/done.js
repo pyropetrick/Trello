@@ -1,30 +1,11 @@
-const backButton = document.querySelector('.card-item__btn-back')
-const completeButton = document.querySelector('.card-item__btn-complt');
-const render = document.querySelector('.render');
-
-
-
-let todos = [];
+const deleteAllBtn = document.querySelector('.delete-all__btn');
 
 const options =  {
     hour: 'numeric', minute: 'numeric'
 }
 
-let count = todos.length;
-
-function addCounter(){
-    const counter = document.querySelector('.header__counter');
-    counter.innerText = count;
-    if (count === 0){
-        counter.innerText = 0;
-    } else if (count > 6){
-        alert('Are you sure, you want to add ToDo?')
-    }
-}
-
-
-function renderFromToDo () {
-    const inProgressList = document.querySelector('.progress-card__card-list')
+function renderFromProgress () {
+    const doneList = document.querySelector('.done-card__card-list')
 
     const cardItem = document.createElement('li');
     cardItem.classList.add('progress-card__card-item');
@@ -35,12 +16,7 @@ function renderFromToDo () {
     const btnBack = document.createElement('button');
     btnBack.classList.add('card-item__btn-back');
     btnBack.classList.add('card-item__btn');
-    btnBack.textContent = 'back';
-
-    const btnComplete = document.createElement('button');
-    btnComplete.classList.add('card-item__btn-complt');
-    btnComplete.classList.add('card-item__btn');
-    btnComplete.textContent = 'complete';
+    btnBack.textContent = 'delete';
 
     const descrWrap = document.createElement('div');
     descrWrap.classList.add('card-item__descr--wrapper');
@@ -79,7 +55,6 @@ function renderFromToDo () {
 
 
     btnWrapper.append(btnBack);
-    btnWrapper.append(btnComplete);
 
     descrWrap.append(title);
     title.append(titleSpan);
@@ -95,17 +70,11 @@ function renderFromToDo () {
     cardItem.append(descrWrap);
     cardItem.append(footer);
 
-    inProgressList.append(cardItem);
+    doneList.append(cardItem);
     
-    addCounter();
+    // addCounter();
 }
 
-function init () {
-    renderFromToDo();
-    // todos.push(todo);
-}
-
-render.addEventListener('click', init);
 
 
-
+deleteAllBtn.addEventListener('click', renderFromProgress);
