@@ -3,14 +3,22 @@ const completeButton = document.querySelector('.card-item__btn-complt');
 const render = document.querySelector('.render');
 
 
-
-let todos = [];
-
 const options =  {
     hour: 'numeric', minute: 'numeric'
 }
 
 let count = todos.length;
+
+
+// function addTodoFromCard (){
+//     todos.push(
+//         {
+//             id: INDX++,
+//             title: id,
+
+//         }
+//     )
+// }
 
 function addCounter(){
     const counter = document.querySelector('.header__counter');
