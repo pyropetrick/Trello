@@ -5,3 +5,8 @@
     background-color: #f4f4f4;
     font-family: $roboto;
 }
+
+.trello-list-cards {
+    display: flex;
+    justify-content: space-between;
+}
