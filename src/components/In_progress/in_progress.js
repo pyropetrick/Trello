@@ -2,19 +2,22 @@ const backButton = document.querySelector('.card-item__btn-back')
 const completeButton = document.querySelector('.card-item__btn-complt');
 const render = document.querySelector('.render');
 
-let todo = [];
+
+
+let todos = [];
 
 const options =  {
-    year: '2-digit', month: '2-digit', day: '2-digit',
     hour: 'numeric', minute: 'numeric'
 }
 
-let count = 1;
+let count = todos.length;
 
 function addCounter(){
     const counter = document.querySelector('.header__counter');
-    counter.innerText = count++;
-    if (count > 6){
+    counter.innerText = count;
+    if (count === 0){
+        counter.innerText = 0;
+    } else if (count > 6){
         alert('Are you sure, you want to add ToDo?')
     }
 }
@@ -71,7 +74,7 @@ function renderFromToDo () {
 
     const dateSpan = document.createElement('span');
     dateSpan.classList.add('card-item__footer-user-date');
-    dateSpan.innerText = `${new Intl.DateTimeFormat('en-US', options).format(new Date())}`;
+    dateSpan.innerText = `${new Intl.DateTimeFormat('ru', options).format(new Date())}`;
 
 
 
@@ -93,11 +96,13 @@ function renderFromToDo () {
     cardItem.append(footer);
 
     inProgressList.append(cardItem);
+    
+    addCounter();
 }
 
 function init () {
     renderFromToDo();
-    addCounter();
+    // todos.push(todo);
 }
 
 render.addEventListener('click', init);

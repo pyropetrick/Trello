@@ -2,34 +2,50 @@
     width: 300px;
     display: flex;
     flex-direction: column;
-
-    &__body {
-        padding: 15px;
-        border: 2px solid #000;
-        border-top: none;
-        border-radius: 0px 0px 30px 30px;
-    }
+    padding: 15px;
+    border: 2px solid #000;
+    border-radius: 15px;
+    height: 500px;
+    background-color: $secondary;
 
     &__header {
         border: 2px solid #000;
-        border-radius: 15px 15px 0px 0px;
+        border-radius: 10px;
         padding: 10px;
         display: flex;
         justify-content: space-between;
         background-color: #F5F5F5;
         text-transform: uppercase;
-        font-weight: 700;
+        font-weight: 500;
+        margin-bottom: 15px;
     }
+}
+
+.header__counter {
+    font-size: 24px;
 }
 
 .progress-card {
 
     &__card-item{
         border: 2px solid #000;
-        border-radius: 15px;    
+        border-radius: 5px;    
         padding: 10px;
         background-color: #F5F5F5;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
+    }
+}
+
+.progress-card__card-list{
+    overflow-y: auto;
+    gap: 10px;
+    padding: 0 5px;
+
+    &::-webkit-scrollbar {
+        width: 2px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: black;
     }
 }
 
