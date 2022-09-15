@@ -8,18 +8,22 @@ import{
 
 } from '../modal/modal'
 
+let actionAdd = false;
+let currentTaskEditId = 0;
 const btnAddTodo = document.querySelector('.item-todo__button-add-todo');
 const todos = [];
 
 function addTodo() {
+    actionAdd = true;
+    showEditMenu();
+}
 
-    if (todos.length >= 6) {
-        showWarning('Вы пытаетесь добавить больше 6 карточек, удалить первую?');
-    } else {
-        showEditMenu();
-    }
-
-    
+function randomRGB() {
+    const r = Math.floor(Math.random() * (256)),
+          g = Math.floor(Math.random() * (256)),
+          b = Math.floor(Math.random() * (256)),
+          color = `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`;
+    return color
 }
 
 function deleteCard({target}) {
@@ -31,9 +35,16 @@ function deleteCard({target}) {
 }
 
 function onEdit({target}) {
-
-    
+    const item = target.parentNode.parentNode.parentNode;
+    const itemId = +item.getAttribute('id');
+    currentTaskEditId = itemId;
+    const title = item.querySelector('.tasks-list__item-title').innerHTML;
+    const desc = item.querySelector('.tasks-list__item-desc').innerHTML;
+    modalTitle.value = title;
+    modalDesc.value = desc;
+    actionAdd = false;
     showEditMenu();
+
 }
 
 function renderCounter() {
@@ -45,11 +56,12 @@ function renderCounter() {
 function renderTodo(list = todos) {
     const tasksList = document.querySelector('.tasks-list');
     tasksList.innerHTML = '';
-    list.forEach(({id, titleTask, description, time}) => {
+    list.forEach(({id, titleTask, description, time, colorItem}) => {
         const task = document.createElement('li');
         task.classList.add('tasks-list__item');
         task.setAttribute('id', id);
         task.setAttribute('draggable', true);
+        task.style.background = colorItem;
 
         // titles 
         const titlesBlock = document.createElement('div');
@@ -132,19 +144,29 @@ function renderTodo(list = todos) {
     renderCounter();
 }
 
-function confirmEdit()  {
-    let options = {
-        hour: 'numeric',
-        minute: 'numeric',
+function onConfirm()  {
+    if (actionAdd) {
+        let options = {
+            hour: 'numeric',
+            minute: 'numeric',
         }
-    let date = new Date();
-    let todo = {
-        id: Date.now(),
-        titleTask: modalTitle.value,
-        description: modalDesc.value,
-        time: date.toLocaleString('ru', options)
+        let date = new Date();
+        let color = randomRGB();
+        let todo = {
+            id: Date.now(),
+            titleTask: modalTitle.value,
+            description: modalDesc.value,
+            time: date.toLocaleString('ru', options),
+            colorItem: color,
+        }
+
+        todos.push(todo);
+
+    } else {
+        let currentTaskIdx = todos.findIndex(task => task.id === currentTaskEditId)
+        todos[currentTaskIdx].titleTask = modalTitle.value;
+        todos[currentTaskIdx].description = modalDesc.value;
     }
-    todos.push(todo);
     renderTodo();
     modalWrapper.classList.remove('active');
     modalTitle.value = '';
@@ -152,6 +174,8 @@ function confirmEdit()  {
 }
 
 btnAddTodo.addEventListener('click', addTodo);
-modalBtnConfirm.addEventListener('click', confirmEdit);
+modalBtnConfirm.addEventListener('click', onConfirm);
+
+
 
 
