@@ -1,8 +1,15 @@
+
 const deleteAllBtn = document.querySelector('.delete-all__btn');
 
 const options =  {
     hour: 'numeric', minute: 'numeric'
 }
+
+document.addEventListener('click', event => {
+    if(event.target.matches(".card-item__btn-complt")){
+        return renderFromProgress()
+    }
+}, false)
 
 function renderFromProgress () {
     const doneList = document.querySelector('.done-card__card-list')

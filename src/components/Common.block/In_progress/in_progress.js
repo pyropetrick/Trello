@@ -1,34 +1,30 @@
 const backButton = document.querySelector('.card-item__btn-back')
 const completeButton = document.querySelector('.card-item__btn-complt');
-const render = document.querySelector('.render');
 
+const todosInProgress = [];
 
 const options =  {
     hour: 'numeric', minute: 'numeric'
 }
 
-let count = todos.length;
-
-
-// function addTodoFromCard (){
-//     todos.push(
-//         {
-//             id: INDX++,
-//             title: id,
-
-//         }
-//     )
-// }
-
-function addCounter(){
-    const counter = document.querySelector('.header__counter');
-    counter.innerText = count;
-    if (count === 0){
-        counter.innerText = 0;
-    } else if (count > 6){
-        alert('Are you sure, you want to add ToDo?')
+document.addEventListener('click', event => {
+    if(event.target.matches(".tasks-list__item-actions-jump")){
+        return renderFromToDo ()
     }
-}
+}, false)
+
+
+
+
+// function addCounter(){
+//     const counter = document.querySelector('.header__counter');
+//     counter.innerText = count;
+//     if (count === 0){
+//         counter.innerText = 0;
+//     } else if (count > 6){
+//         alert('Are you sure, you want to add ToDo?')
+//     }
+// }
 
 
 function renderFromToDo () {
@@ -105,14 +101,9 @@ function renderFromToDo () {
 
     inProgressList.append(cardItem);
     
-    addCounter();
+    // addCounter();
 }
 
-function init () {
-    renderFromToDo();
-}
-
-render.addEventListener('click', init);
 
 
 
