@@ -1,0 +1,141 @@
+.progress {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border: 2px solid #000;
+    border-radius: 15px;
+    height: 500px;
+    background-color: $secondary;
+
+    &__header {
+        border: 2px solid #000;
+        border-radius: 10px;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        background-color: #F5F5F5;
+        text-transform: uppercase;
+        font-weight: 500;
+        margin-bottom: 15px;
+    }
+}
+
+.header__counter {
+    font-size: 24px;
+}
+
+.progress-card {
+
+    &__card-item{
+        border: 2px solid #000;
+        border-radius: 5px;    
+        padding: 10px;
+        background-color: #F5F5F5;
+        margin-bottom: 10px;
+    }
+}
+
+.progress-card__card-list{
+    overflow-y: auto;
+    gap: 10px;
+    padding: 0 5px;
+
+    &::-webkit-scrollbar {
+        width: 2px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: black;
+    }
+}
+
+.card-item {
+    &__btn {
+        background-color: #fff;
+        border: 1px solid #000;
+        border-radius: 2px;
+        width:  60px;
+        height: 100%;
+        padding: 2px;
+        font-size: 10px;
+        text-transform: uppercase;
+
+        &--wrapper {
+            display: flex;
+            justify-content: end;
+            gap: 3px;
+        }
+    }
+
+    &__btn-back{
+        &:hover{
+            background-color: red;
+            transform: translateY(3%);
+            color: #fff;
+        }
+        &:active {
+            transform: translateY(7%);
+        }
+    }
+
+    &__btn-complt{
+        &:hover{
+            background-color: rgb(36, 223, 36);
+            transform: translateY(3%);
+            color: #fff;
+        }
+        &:active {
+            transform: translateY(7%);
+        }
+    }
+
+    &__descr--wrapper {
+        margin-bottom: 20px;
+    }
+
+    &__stat-title {
+        font-weight: 700;
+    }
+
+    &__stat-descr {
+        font-weight: 700;
+    }
+
+
+    &__title {
+        margin-bottom: 20px;
+    }
+
+    &__footer {
+        &--wrapper{
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+        }
+
+        &-user-text {
+            font-weight: 700;
+            text-transform: capitalize;
+        }
+
+        &-user-date {
+            font-weight: 700;
+            text-transform: capitalize;
+        }
+    }
+}
+
+// delete all
+
+.delete-all__btn {
+    background-color: rgba(#f4f4f4, 1.0);
+    border-radius: 8px;
+    width: 100%;
+    font-weight: 500;
+    text-transform: capitalize;
+    @include transitionAll;
+    &:hover {
+        cursor: pointer;
+        background-color: #a0a0a0;
+    }
+}
