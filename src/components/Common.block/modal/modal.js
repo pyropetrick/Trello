@@ -5,6 +5,7 @@ const userList = document.querySelector('.user__list');
 const tasksList = document.querySelector('.tasks-list');
 
 
+
 export const editItem = () => {
     modalWrapper.style.display = "flex";
 }
@@ -40,3 +41,14 @@ retrieveUserList().forEach((item, index) => {
    userOption.innerHTML = item;
    userList.appendChild(userOption);
 });
+
+function updateTrelloTime () {
+    let date = new Date();
+    let options = {
+        hour: 'numeric',
+        minute: 'numeric',
+    }
+    let currentTime = document.querySelector('.time-action__time');
+    currentTime.innerHTML = date.toLocaleString('ru', options);
+}
+setInterval(updateTrelloTime, 1000);

@@ -104,5 +104,3 @@ function renderTodo(list = todos) {
 }
 
 btnAddTodo.addEventListener('click', addTodo);
-
-
