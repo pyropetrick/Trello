@@ -1,10 +1,10 @@
 
-
 export const modalTitle = document.querySelector('.modal__input-title');
 export const modalDesc = document.querySelector('.modal__input-description ');
 export const modalBtnConfirm = document.querySelector('.modal__btn-confirm');
 export const modalBtnCancel = document.querySelector('.modal__btn-cancel');
 export const modalWrapper = document.querySelector('.modal__wrapper');
+const userList = document.querySelector('.user__list')
 
 
 
@@ -40,9 +40,6 @@ export const retrieveUserList = () => {
     return users;
 }
 
-modalBtnConfirm.addEventListener('click', renderConfirm);
-modalBtnCancel.addEventListener('click', renderCancel);
-
 retrieveUserList().forEach((item, index) => {
    const userOption = document.createElement("option");
    userOption.value = index;
@@ -56,7 +53,7 @@ function updateTrelloTime () {
         hour: 'numeric',
         minute: 'numeric',
     }
-    let currentTime = document.querySelector('.time-action__time');
-    currentTime.innerHTML = date.toLocaleString('ru', options);
+    let currentTime = document.querySelector('.header__time');
+    currentTime.innerText = date.toLocaleString('ru', options);
 }
 setInterval(updateTrelloTime, 1000);

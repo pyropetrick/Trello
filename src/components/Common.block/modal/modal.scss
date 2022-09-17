@@ -68,7 +68,6 @@
     padding: 30px 40px;
     width: 500px;
     background-color: #d8f2da;
-    width: 300px;
     height: 150px;
     flex-direction: column;
     gap: 25px 0;
@@ -92,7 +91,6 @@
     }
 }
 
-<<<<<<< HEAD
 .trello {
     &__block {
         display: flex;
@@ -107,7 +105,7 @@
 
     &__title {
         text-align: center;
-        @include fontSize (1px);
+        @include fontSize(16);
         margin: auto 0;
     }
 
@@ -124,9 +122,7 @@
     &__time-action__time {
         text-align: center;
         padding: 13px;
-        @include fontSize (1px);
+        @include fontSize(16);
         color: #545454;
     }
 }
-=======
->>>>>>> 1232735 (add some styles on home section)
