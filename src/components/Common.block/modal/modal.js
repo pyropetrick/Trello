@@ -7,11 +7,6 @@ export const modalWrapper = document.querySelector('.modal__wrapper');
 const userList = document.querySelector('.user__list')
 
 
-
-
-
-
-
 export const showEditMenu = () => {
     modalWrapper.classList.add('active');
 }
