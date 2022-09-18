@@ -17,7 +17,6 @@ const done = [];
 export function addTodo() {
     actionAdd = true;
     showEditMenu();
-
 }
 
 function randomRGB() {
@@ -219,7 +218,6 @@ export function onConfirm()  {
     modalWrapper.classList.remove('active');
     modalTitle.value = '';
     modalDesc.value = '';
-    currentUserName = '';
 }
 
 
