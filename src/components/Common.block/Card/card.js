@@ -8,13 +8,12 @@ import {
 
 } from '../modal/modal';
 
-const options = document.querySelector('.optionUser')
-
 let actionAdd = false;
 let currentTaskEditId = 0;
 export const btnAddTodo = document.querySelector('.item-todo__button-add-todo');
 const todos = [];
-
+const progress = [];
+const done = [];
 export function addTodo() {
     actionAdd = true;
     showEditMenu();
@@ -34,7 +33,7 @@ function deleteCard({target}) {
     const cardId = +card.getAttribute('id');
     const cardIdx = todos.findIndex(({id}) => id === cardId);
     todos.splice(cardIdx, 1);
-    renderTodo();
+    renderTask();
 }
 
 function onEdit({target}) {
@@ -50,14 +49,24 @@ function onEdit({target}) {
 
 }
 
-function renderCounter() {
+function renderCounter(list) {
     const counter = document.querySelector('.item-todo__header-counter');
-    counter.innerHTML = todos.length;
+    counter.innerHTML = list.length;
     
 }
+function jumpToProgress({ target }) {
+    const item = target.parentNode.parentNode;
+    const idItem = +item.getAttribute('id');
+    const indexItem = todos.findIndex(({id}) => id === idItem);
+    progress.push(todos[indexItem])
+    renderTask(progress, '.progress-list');
+    console.log(progress);
+    todos.splice(indexItem, 1);
+    renderTask(todos,'.todos-list');
+}
 
-function renderTodo(list = todos) {
-    const tasksList = document.querySelector('.tasks-list');
+function renderTask(list, currentList) {
+    const tasksList = document.querySelector(currentList);
     tasksList.innerHTML = '';
     list.forEach(({id, titleTask, description, time, colorItem, userName}) => {
         const task = document.createElement('li');
@@ -98,20 +107,60 @@ function renderTodo(list = todos) {
         editBlock.classList.add('tasks-list__item-actions-editing');
 
         // buttons
+        if (currentList === '.todos-list') {
+            const btnEdit = document.createElement('button');
+            btnEdit.classList.add('tasks-list__item-actions-edit');
+            btnEdit.classList.add('button-card');
+            btnEdit.innerHTML = 'Edit';
+            btnEdit.addEventListener('click', onEdit);
 
-        const btnEdit = document.createElement('button');
-        btnEdit.classList.add('tasks-list__item-actions-edit');
-        btnEdit.innerHTML = 'Edit';
-        btnEdit.addEventListener('click', onEdit);
+            const btnDelete = document.createElement('button');
+            btnDelete.classList.add('tasks-list__item-actions-delete');
+            btnDelete.classList.add('button-card');
+            btnDelete.innerHTML = 'Delete';
+            btnDelete.addEventListener('click', deleteCard);
 
-        const btnDelete = document.createElement('button');
-        btnDelete.classList.add('tasks-list__item-actions-delete');
-        btnDelete.innerHTML = 'Delete';
-        btnDelete.addEventListener('click', deleteCard);
+            const btnJump = document.createElement('button');
+            btnJump.classList.add('tasks-list__item-actions-jump');
+            btnJump.classList.add('button-card');
+            btnJump.innerHTML = '>';
+            btnJump.addEventListener('click', jumpToProgress);
 
-        const btnJump = document.createElement('button');
-        btnJump.classList.add('tasks-list__item-actions-jump');
-        btnJump.innerHTML = '>';
+            editBlock.append(btnEdit);
+            editBlock.append(btnDelete);
+            actionsBlock.append(editBlock);
+            actionsBlock.append(btnJump);
+
+            renderCounter(todos);
+        }
+        else if (currentList === '.progress-list') {
+            const btnBack = document.createElement('button')
+            btnBack.classList.add('tasks-list__item-actions-back');
+            btnBack.classList.add('button-card');
+            btnBack.innerHTML = 'Back';
+
+            const btnComplete = document.createElement('button');
+            btnComplete.classList.add('tasks-list__item-actions-complete');
+            btnComplete.classList.add('button-card');
+            btnComplete.innerHTML = 'Complete';
+
+            editBlock.append(btnBack);
+            editBlock.append(btnComplete);
+            actionsBlock.append(editBlock);
+
+            renderCounter(progress);
+        }
+        else if (currentList === '.done-list') {
+            const btnDelete = document.createElement('button');
+            btnDelete.classList.add('tasks-list__item-actions-delete');
+            btnDelete.classList.add('button-card');
+            btnDelete.innerHTML = 'Delete';
+            btnDelete.addEventListener('click', deleteCard);
+
+            editBlock.append(btnDelete);
+            actionsBlock.append(editBlock);
+            renderCounter(done);
+        }
 
         // time 
 
@@ -126,12 +175,7 @@ function renderTodo(list = todos) {
         titlesBlock.append(desc);
         titlesBlock.append(user);
 
-        // actions 
-
-        editBlock.append(btnEdit);
-        editBlock.append(btnDelete);
-        actionsBlock.append(editBlock);
-        actionsBlock.append(btnJump);
+        // actions
         actionsBlock.append(timeCreate);
         
         // task 
@@ -144,7 +188,7 @@ function renderTodo(list = todos) {
         })
 
         
-    renderCounter();
+
 }
 
 export function onConfirm()  {
@@ -170,9 +214,8 @@ export function onConfirm()  {
         let currentTaskIdx = todos.findIndex(task => task.id === currentTaskEditId)
         todos[currentTaskIdx].titleTask = modalTitle.value;
         todos[currentTaskIdx].description = modalDesc.value;
-        todos[currentTaskIdx].userName = currentUserName;
-    }
-    renderTodo();
+        todos[currentTaskIdx].userName = currentUserName;    }
+    renderTask(todos,'.todos-list');
     modalWrapper.classList.remove('active');
     modalTitle.value = '';
     modalDesc.value = '';
