@@ -1,21 +1,24 @@
-import{
-    showEditMenu,  
-    showWarning, 
-    modalTitle, 
+import {
+    showEditMenu,
+    showWarning,
+    modalTitle,
     modalDesc,
     modalWrapper,
-    modalBtnConfirm,
+    currentUserName,
 
-} from '../modal/modal'
+} from '../modal/modal';
+
+const options = document.querySelector('.optionUser')
 
 let actionAdd = false;
 let currentTaskEditId = 0;
-const btnAddTodo = document.querySelector('.item-todo__button-add-todo');
+export const btnAddTodo = document.querySelector('.item-todo__button-add-todo');
 const todos = [];
 
-function addTodo() {
+export function addTodo() {
     actionAdd = true;
     showEditMenu();
+
 }
 
 function randomRGB() {
@@ -56,7 +59,7 @@ function renderCounter() {
 function renderTodo(list = todos) {
     const tasksList = document.querySelector('.tasks-list');
     tasksList.innerHTML = '';
-    list.forEach(({id, titleTask, description, time, colorItem}) => {
+    list.forEach(({id, titleTask, description, time, colorItem, userName}) => {
         const task = document.createElement('li');
         task.classList.add('tasks-list__item');
         task.setAttribute('id', id);
@@ -82,7 +85,7 @@ function renderTodo(list = todos) {
         // user 
         const user = document.createElement('p');
         user.classList.add('tasks-list__item-user');
-        user.innerText = '';
+        user.innerText = userName;
 
         // actions 
 
@@ -144,7 +147,7 @@ function renderTodo(list = todos) {
     renderCounter();
 }
 
-function onConfirm()  {
+export function onConfirm()  {
     if (actionAdd) {
         let options = {
             hour: 'numeric',
@@ -158,6 +161,7 @@ function onConfirm()  {
             description: modalDesc.value,
             time: date.toLocaleString('ru', options),
             colorItem: color,
+            userName: currentUserName,
         }
 
         todos.push(todo);
@@ -166,15 +170,20 @@ function onConfirm()  {
         let currentTaskIdx = todos.findIndex(task => task.id === currentTaskEditId)
         todos[currentTaskIdx].titleTask = modalTitle.value;
         todos[currentTaskIdx].description = modalDesc.value;
+        todos[currentTaskIdx].userName = currentUserName;
     }
     renderTodo();
     modalWrapper.classList.remove('active');
     modalTitle.value = '';
     modalDesc.value = '';
+    currentUserName = '';
 }
 
-btnAddTodo.addEventListener('click', addTodo);
-modalBtnConfirm.addEventListener('click', onConfirm);
+
+
+
+
+
 
 
 
