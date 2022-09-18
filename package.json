@@ -1,6 +1,6 @@
 {
   "name": "Trello",
-  "version": "0.0.1",
+  "version": "0.9.0",
   "description": "",
   "homepage": "https://github.com/pyropetrick/Trello",
   "browserslist": "> 0.5%, last 2 versions, not dead",
