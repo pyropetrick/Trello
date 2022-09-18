@@ -10,9 +10,7 @@
 
 // reset + standart style
 @import './adjustments';
-@import './btns';
-
-
+@import 'btns.scss';
 
 // header
 @import '../components/Common.block/header/header';
@@ -25,3 +23,4 @@
 
 //in progress
 @import '../components/Common.block/In_progress/in-progress';
+

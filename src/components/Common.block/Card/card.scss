@@ -72,24 +72,17 @@
                 display: flex;
                 gap: 5px;
             }
-            &-edit {
-                border-radius: 5px;
-                border:none;
-                padding: 5px;
-                @include fontSize(14);
-                @include transitionAll;
+
+            &-edit, &-complete {
+
                 &:hover {
                     cursor: pointer;
                     background-color: $yellowColor;
 
                 }
             }
-            &-delete {
-                border-radius: 5px;
-                border:none;
-                padding: 5px;
-                @include fontSize(14);
-                @include transitionAll;
+            &-delete, &-back {
+
                 &:hover {
                     cursor: pointer;
                     background-color: $redColor;
@@ -97,12 +90,7 @@
                 
             }
             &-jump {
-                padding: 5px;
-                border-radius: 5px;
-                border: none;
                 align-self: flex-end;
-
-                @include transitionAll;
                 &:hover {
                     cursor: pointer;
                     background-color: #a0a0a0;

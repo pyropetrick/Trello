@@ -6,10 +6,6 @@ import {
 } from '../components/Common.block/Card/card';
 
 import {
-
-} from '../components/Common.block/Done/done';
-
-import {
   getListUsers,
   updateTrelloTime,
   modalBtnCancel,
@@ -20,9 +16,6 @@ import {
 
 } from '../components/Common.block/modal/modal';
 
-import {
-
-} from '../components/Common.block/In_progress/in_progress';
 
 export function init() {
   // add users list to modal
@@ -39,7 +32,6 @@ export function init() {
 
   // add card
   btnAddTodo.addEventListener('click', addTodo);
-
 
   // set item
   userList.addEventListener('change', setItem);
