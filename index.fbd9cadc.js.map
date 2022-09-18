@@ -1,0 +1,1 @@
+{"mappings":"oeAAA,IAAAA,EAAAC,EAAA,SAEAC,SAASC,iBAAiB,mBAAoBH,EAAAI","sources":["src/js/main.js"],"sourcesContent":["import { init } from './init';\n\ndocument.addEventListener(\"DOMContentLoaded\", init)"],"names":["$4x1oL","parcelRequire","document","addEventListener","init"],"version":3,"file":"index.fbd9cadc.js.map"}

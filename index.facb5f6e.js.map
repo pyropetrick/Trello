@@ -1,0 +1,1 @@
+{"mappings":"gfAAA,IAAAA,EAAAC,EAAA,SAEAC,SAASC,iBAAiB,mBAAoBH,EAAAI,K","sources":["src/js/main.js"],"sourcesContent":["import { init } from './init';\n\ndocument.addEventListener(\"DOMContentLoaded\", init)"],"names":["$64kjB","parcelRequire","document","addEventListener","init"],"version":3,"file":"index.facb5f6e.js.map"}
