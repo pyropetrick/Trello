@@ -3,6 +3,21 @@
     position: absolute;
     width: 100%;
 
+    @media (max-width: 1200px) {
+		width: 1024px;
+	}
+
+	@media (max-width: 767px) {
+		width: 771px;
+	}
+
+	@media (max-width: 479px) {
+		width: 100%;
+        margin: auto;
+        position: inherit;
+	}
+
+
 
     .container {
         display: flex;
@@ -12,7 +27,21 @@
         border-radius: 5px;
         padding: 10px;
         background-color: #ececec;
+
+        @media (max-width: 1200px) {
+            width: 1024px;
+        }
+    
+        @media (max-width: 767px) {
+            width: 771px;
+        }
+    
+        @media (max-width: 479px) {
+            width: 100%;
+            margin: auto;
+        }
     }
+
     &__logo {
         &-link {
             //width: 36px;

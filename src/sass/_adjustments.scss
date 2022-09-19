@@ -2,6 +2,17 @@
 *::before,
 *::after {
   box-sizing: border-box;
+    @media (max-width: 1200px) {
+        width: 1024px;
+    }
+
+    @media (max-width: 767px) {
+        width: 771px;
+    }
+
+    @media (max-width: 479px) {
+        width: 100%;
+    }
 }
 
 // Убираем внутренние отступы

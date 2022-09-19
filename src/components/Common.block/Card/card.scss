@@ -19,12 +19,9 @@
 
 	@media (max-width: 479px) {
 		width: 100%;
+        margin: 10px;
 	}
 
-  @include mediaMobile {
-    border-bottom: none;
-    padding: 20px;
-  }
 
     &__header {
         @include flexX(space-between);
