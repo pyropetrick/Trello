@@ -9,4 +9,22 @@
 .trello-list-cards {
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 1200px) {
+		width: 1024px;
+	}
+
+	@media (max-width: 767px) {
+		width: 771px;
+	}
+
+	@media (max-width: 479px) {
+		width: 100%;
+        flex-wrap: wrap;
+	}
+
+  @include mediaMobile {
+    border-bottom: 10px;
+    padding: 20px;
+  }
 }

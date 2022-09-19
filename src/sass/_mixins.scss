@@ -86,3 +86,15 @@
 		@content;
 	}
 }
+
+@mixin mediaTablet {
+	@media screen and (max-width: 767px) {
+		@content;
+	}
+}
+
+@mixin mediaMobile {
+	@media screen and (max-width: 479px) {
+		@content;
+	}
+}

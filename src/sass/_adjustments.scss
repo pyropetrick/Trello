@@ -71,7 +71,21 @@ select {
 .container {
   margin: 0 auto;
   width: 1200px;  
-  
-  
-}
 
+  @media (max-width: 1200px) {
+		width: 1024px;
+	}
+
+	@media (max-width: 767px) {
+		width: 771px;
+	}
+
+	@media (max-width: 479px) {
+		width: 100%;
+	}
+
+  @include mediaMobile {
+    border-bottom: none;
+    padding: 20px;
+  }
+}

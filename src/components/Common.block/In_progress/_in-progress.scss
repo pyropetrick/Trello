@@ -8,6 +8,23 @@
     height: 500px;
     background-color: $secondary;
 
+    @media (max-width: 1200px) {
+		width: 1024px;
+	}
+
+	@media (max-width: 767px) {
+		width: 771px;
+	}
+
+	@media (max-width: 479px) {
+		width: 100%;
+	}
+
+  @include mediaMobile {
+    border-bottom: none;
+    padding: 20px;
+  }
+
     &__header {
         border: 2px solid #000;
         border-radius: 10px;

@@ -9,6 +9,23 @@
     @include flexDir(column);
     gap: 15px 0;
 
+    @media (max-width: 1200px) {
+		width: 1024px;
+	}
+
+	@media (max-width: 767px) {
+		width: 771px;
+	}
+
+	@media (max-width: 479px) {
+		width: 100%;
+	}
+
+  @include mediaMobile {
+    border-bottom: none;
+    padding: 20px;
+  }
+
     &__header {
         @include flexX(space-between);
         border: 2px solid black;
@@ -19,9 +36,9 @@
         &-counter {
             padding: 5px;
         }
-    }
-
         
+    }
+  
     &__button-add-todo {
         background-color: rgba(#f4f4f4, 1.0);
         border-radius: 8px;
