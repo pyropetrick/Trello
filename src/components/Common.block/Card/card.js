@@ -5,7 +5,8 @@ import {
     modalDesc,
     modalWrapper,
     currentUserName,
-
+    modalBtnCancel,
+    modalBtnConfirm,
 } from '../modal/modal';
 
 let actionAdd = false;
@@ -53,6 +54,31 @@ function renderCounter(list) {
     counter.innerHTML = list.length;
     
 }
+
+
+
+function addCounterProgress (list){
+    const counter = document.querySelector('.header__counter');
+    if (list.length <= 6){
+        counter.innerHTML = list.length;
+    } else {
+        counter.innerHTML = list.length;
+        showWarning('Are you sure?')
+    }
+}
+
+// function jumpToDone({ target }) {
+//     const item = target.parentNode.parentNode;
+//     const idItem = +item.getAttribute('id');
+//     const indexItem = progress.findIndex(({id}) => id === idItem);
+//     done.push(progress[indexItem])
+//     renderTask(done, '.done-list');
+//     progress.splice(indexItem, 1);
+//     renderTask(progress,'.progress-list');
+// }
+
+console.log(done)
+
 function jumpToProgress({ target }) {
     const item = target.parentNode.parentNode;
     const idItem = +item.getAttribute('id');
@@ -142,12 +168,13 @@ function renderTask(list, currentList) {
             btnComplete.classList.add('tasks-list__item-actions-complete');
             btnComplete.classList.add('button-card');
             btnComplete.innerHTML = 'Complete';
+            // btnComplete.addEventListener('click', jumpToDone)
 
             editBlock.append(btnBack);
             editBlock.append(btnComplete);
             actionsBlock.append(editBlock);
 
-            renderCounter(progress);
+            addCounterProgress(progress);
         }
         else if (currentList === '.done-list') {
             const btnDelete = document.createElement('button');
