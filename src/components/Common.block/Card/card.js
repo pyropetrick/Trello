@@ -32,7 +32,7 @@ function deleteCard({target}) {
     const cardId = +card.getAttribute('id');
     const cardIdx = todos.findIndex(({id}) => id === cardId);
     todos.splice(cardIdx, 1);
-    renderTask();
+    renderTask(todos, '.todos-list');
 }
 
 function onEdit({target}) {
