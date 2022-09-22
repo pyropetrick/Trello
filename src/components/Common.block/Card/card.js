@@ -13,6 +13,7 @@ let currentTaskEditId = 0;
 const todos = [];
 const progress = [];
 const done = [];
+const deleteAllBtn = document.querySelector('.delete-all__btn');
 export const btnAddTodo = document.querySelector('.item-todo__button-add-todo');
 export function addTodo() {
     actionAdd = true;
@@ -136,11 +137,13 @@ function renderTask(list, currentList) {
             btnBack.classList.add('tasks-list__item-actions-back');
             btnBack.classList.add('button-card');
             btnBack.innerHTML = 'Back';
+            // TODO добавить слушатель события для кнопки back
 
             const btnComplete = document.createElement('button');
             btnComplete.classList.add('tasks-list__item-actions-complete');
             btnComplete.classList.add('button-card');
             btnComplete.innerHTML = 'Complete';
+            // TODO добавить слушатель события для кнопки complete
 
             editBlock.append(btnBack);
             editBlock.append(btnComplete);
@@ -153,7 +156,9 @@ function renderTask(list, currentList) {
             btnDelete.classList.add('tasks-list__item-actions-delete');
             btnDelete.classList.add('button-card');
             btnDelete.innerHTML = 'Delete';
-            btnDelete.addEventListener('click', deleteCard);
+            // btnDelete.addEventListener('click', deleteCard); - сейчас она будет удалять из туду
+            // TODO Довести до ума и сделать универсальной либо сделать новую такую же функцию с удалением
+
 
             editBlock.append(btnDelete);
             actionsBlock.append(editBlock);
@@ -187,8 +192,6 @@ function renderTask(list, currentList) {
     renderCounter(todos, '.todos-counter');
     renderCounter(done, '.done-counter');
     renderCounter(progress, '.progress-counter');
-
-        
 
 }
 
