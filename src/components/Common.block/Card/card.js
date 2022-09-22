@@ -10,10 +10,10 @@ import {
 
 let actionAdd = false;
 let currentTaskEditId = 0;
-export const btnAddTodo = document.querySelector('.item-todo__button-add-todo');
 const todos = [];
 const progress = [];
 const done = [];
+export const btnAddTodo = document.querySelector('.item-todo__button-add-todo');
 export function addTodo() {
     actionAdd = true;
     showEditMenu();
@@ -48,20 +48,19 @@ function onEdit({target}) {
 
 }
 
-function renderCounter(list) {
-    const counter = document.querySelector('.item-todo__header-counter');
-    counter.innerHTML = list.length;
-    
+function renderCounter(list, currentList) {
+    let counter = document.querySelector(currentList);
+    counter.innerText = list.length;
 }
 function jumpToProgress({ target }) {
     const item = target.parentNode.parentNode;
     const idItem = +item.getAttribute('id');
     const indexItem = todos.findIndex(({id}) => id === idItem);
     progress.push(todos[indexItem])
-    renderTask(progress, '.progress-list');
-    console.log(progress);
     todos.splice(indexItem, 1);
     renderTask(todos,'.todos-list');
+    renderTask(progress, '.progress-list');
+
 }
 
 function renderTask(list, currentList) {
@@ -130,7 +129,7 @@ function renderTask(list, currentList) {
             actionsBlock.append(editBlock);
             actionsBlock.append(btnJump);
 
-            renderCounter(todos);
+
         }
         else if (currentList === '.progress-list') {
             const btnBack = document.createElement('button')
@@ -147,7 +146,7 @@ function renderTask(list, currentList) {
             editBlock.append(btnComplete);
             actionsBlock.append(editBlock);
 
-            renderCounter(progress);
+
         }
         else if (currentList === '.done-list') {
             const btnDelete = document.createElement('button');
@@ -158,7 +157,7 @@ function renderTask(list, currentList) {
 
             editBlock.append(btnDelete);
             actionsBlock.append(editBlock);
-            renderCounter(done);
+
         }
 
         // time 
@@ -185,6 +184,9 @@ function renderTask(list, currentList) {
         tasksList.append(task);
 
         })
+    renderCounter(todos, '.todos-counter');
+    renderCounter(done, '.done-counter');
+    renderCounter(progress, '.progress-counter');
 
         
 

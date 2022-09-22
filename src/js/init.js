@@ -11,15 +11,15 @@ import {
   modalBtnCancel,
   onCancel,
   modalBtnConfirm,
-  setItem, userList,
-
+  setItem,
+  userList,
 
 } from '../components/Common.block/modal/modal';
 
 
 export function init() {
   // add users list to modal
-  getListUsers();
+  getListUsers().then(r => console.log(r));
 
   // time updater
   setInterval(updateTrelloTime, 1000);
