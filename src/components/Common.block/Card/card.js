@@ -25,7 +25,7 @@ function randomRGB() {
     const r = Math.floor(Math.random() * (256)),
           g = Math.floor(Math.random() * (256)),
           b = Math.floor(Math.random() * (256)),
-          color = `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`;
+        color = `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`;
     return color
 }
 
@@ -35,6 +35,14 @@ function deleteCard({target}) {
     const cardIdx = todos.findIndex(({id}) => id === cardId);
     todos.splice(cardIdx, 1);
     renderTask(todos, '.todos-list');
+}
+
+function deleteCardDOne({target}) {
+    const card = target.parentNode.parentNode.parentNode
+    const cardId = +card.getAttribute('id');
+    const cardIdx = done.findIndex(({id}) => id === cardId);
+    done.splice(cardIdx, 1);
+    renderTask(done, '.done-list');
 }
 
 function onEdit({target}) {
@@ -67,18 +75,30 @@ function addCounterProgress (list){
     }
 }
 
+const tryComplete = () => {
+    console.log('work')
+}
 
-// function jumpToDone({ target }) {
-//     const item = target.parentNode.parentNode;
-//     const idItem = +item.getAttribute('id');
-//     const indexItem = progress.findIndex(({id}) => id === idItem);
-//     done.push(progress[indexItem])
-//     renderTask(done, '.done-list');
-//     progress.splice(indexItem, 1);
-//     renderTask(progress,'.progress-list');
-// }
+function jumpToDone({ target }) {
+    const item = target.parentNode.parentNode.parentNode;
+    const idItem = +item.getAttribute('id');
+    const indexItem = progress.findIndex(({id}) => id === idItem);
+    done.push(progress[indexItem])
+    progress.splice(indexItem, 1);
+    renderTask(progress,'.progress-list');
+    renderTask(done, '.done-list');
+}
 
-console.log(done)
+function jumpToDo({ target }) {
+    const item = target.parentNode.parentNode.parentNode;
+    const idItem = +item.getAttribute('id');
+    const indexItem = progress.findIndex(({id}) => id === idItem);
+    todos.push(progress[indexItem])
+    progress.splice(indexItem, 1);
+    renderTask(progress,'.progress-list');
+    renderTask(todos,'.todos-list');
+}
+
 
 function jumpToProgress({ target }) {
     const item = target.parentNode.parentNode;
@@ -164,12 +184,14 @@ function renderTask(list, currentList) {
             btnBack.classList.add('tasks-list__item-actions-back');
             btnBack.classList.add('button-card');
             btnBack.innerHTML = 'Back';
+            btnBack.addEventListener('click', jumpToDo )
             // TODO добавить слушатель события для кнопки back
 
             const btnComplete = document.createElement('button');
             btnComplete.classList.add('tasks-list__item-actions-complete');
             btnComplete.classList.add('button-card');
             btnComplete.innerHTML = 'Complete';
+            btnComplete.addEventListener('click', jumpToDone)
             // TODO добавить слушатель события для кнопки complete
 
             editBlock.append(btnBack);
@@ -183,7 +205,7 @@ function renderTask(list, currentList) {
             btnDelete.classList.add('tasks-list__item-actions-delete');
             btnDelete.classList.add('button-card');
             btnDelete.innerHTML = 'Delete';
-            // btnDelete.addEventListener('click', deleteCard); - сейчас она будет удалять из туду
+            btnDelete.addEventListener('click', deleteCardDOne); // сейчас она будет удалять из туду
             // TODO Довести до ума и сделать универсальной либо сделать новую такую же функцию с удалением
 
 
