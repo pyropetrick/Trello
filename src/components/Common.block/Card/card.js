@@ -1,19 +1,21 @@
-import{
-    showEditMenu,  
-    showWarning, 
-    modalTitle, 
+import {
+    showEditMenu,
+    showWarning,
+    modalTitle,
     modalDesc,
     modalWrapper,
-    modalBtnConfirm,
+    currentUserName,
 
-} from '../modal/modal'
+} from '../modal/modal';
 
 let actionAdd = false;
 let currentTaskEditId = 0;
-const btnAddTodo = document.querySelector('.item-todo__button-add-todo');
 const todos = [];
-
-function addTodo() {
+const progress = [];
+const done = [];
+const deleteAllBtn = document.querySelector('.delete-all__btn');
+export const btnAddTodo = document.querySelector('.item-todo__button-add-todo');
+export function addTodo() {
     actionAdd = true;
     showEditMenu();
 }
@@ -31,7 +33,7 @@ function deleteCard({target}) {
     const cardId = +card.getAttribute('id');
     const cardIdx = todos.findIndex(({id}) => id === cardId);
     todos.splice(cardIdx, 1);
-    renderTodo();
+    renderTask(todos, '.todos-list');
 }
 
 function onEdit({target}) {
@@ -47,16 +49,25 @@ function onEdit({target}) {
 
 }
 
-function renderCounter() {
-    const counter = document.querySelector('.item-todo__header-counter');
-    counter.innerHTML = todos.length;
-    
+function renderCounter(list, currentList) {
+    let counter = document.querySelector(currentList);
+    counter.innerText = list.length;
+}
+function jumpToProgress({ target }) {
+    const item = target.parentNode.parentNode;
+    const idItem = +item.getAttribute('id');
+    const indexItem = todos.findIndex(({id}) => id === idItem);
+    progress.push(todos[indexItem])
+    todos.splice(indexItem, 1);
+    renderTask(todos,'.todos-list');
+    renderTask(progress, '.progress-list');
+
 }
 
-function renderTodo(list = todos) {
-    const tasksList = document.querySelector('.tasks-list');
+function renderTask(list, currentList) {
+    const tasksList = document.querySelector(currentList);
     tasksList.innerHTML = '';
-    list.forEach(({id, titleTask, description, time, colorItem}) => {
+    list.forEach(({id, titleTask, description, time, colorItem, userName}) => {
         const task = document.createElement('li');
         task.classList.add('tasks-list__item');
         task.setAttribute('id', id);
@@ -82,7 +93,7 @@ function renderTodo(list = todos) {
         // user 
         const user = document.createElement('p');
         user.classList.add('tasks-list__item-user');
-        user.innerText = '';
+        user.innerText = userName;
 
         // actions 
 
@@ -95,20 +106,64 @@ function renderTodo(list = todos) {
         editBlock.classList.add('tasks-list__item-actions-editing');
 
         // buttons
+        if (currentList === '.todos-list') {
+            const btnEdit = document.createElement('button');
+            btnEdit.classList.add('tasks-list__item-actions-edit');
+            btnEdit.classList.add('button-card');
+            btnEdit.innerHTML = 'Edit';
+            btnEdit.addEventListener('click', onEdit);
 
-        const btnEdit = document.createElement('button');
-        btnEdit.classList.add('tasks-list__item-actions-edit');
-        btnEdit.innerHTML = 'Edit';
-        btnEdit.addEventListener('click', onEdit);
+            const btnDelete = document.createElement('button');
+            btnDelete.classList.add('tasks-list__item-actions-delete');
+            btnDelete.classList.add('button-card');
+            btnDelete.innerHTML = 'Delete';
+            btnDelete.addEventListener('click', deleteCard);
 
-        const btnDelete = document.createElement('button');
-        btnDelete.classList.add('tasks-list__item-actions-delete');
-        btnDelete.innerHTML = 'Delete';
-        btnDelete.addEventListener('click', deleteCard);
+            const btnJump = document.createElement('button');
+            btnJump.classList.add('tasks-list__item-actions-jump');
+            btnJump.classList.add('button-card');
+            btnJump.innerHTML = '>';
+            btnJump.addEventListener('click', jumpToProgress);
 
-        const btnJump = document.createElement('button');
-        btnJump.classList.add('tasks-list__item-actions-jump');
-        btnJump.innerHTML = '>';
+            editBlock.append(btnEdit);
+            editBlock.append(btnDelete);
+            actionsBlock.append(editBlock);
+            actionsBlock.append(btnJump);
+
+
+        }
+        else if (currentList === '.progress-list') {
+            const btnBack = document.createElement('button')
+            btnBack.classList.add('tasks-list__item-actions-back');
+            btnBack.classList.add('button-card');
+            btnBack.innerHTML = 'Back';
+            // TODO добавить слушатель события для кнопки back
+
+            const btnComplete = document.createElement('button');
+            btnComplete.classList.add('tasks-list__item-actions-complete');
+            btnComplete.classList.add('button-card');
+            btnComplete.innerHTML = 'Complete';
+            // TODO добавить слушатель события для кнопки complete
+
+            editBlock.append(btnBack);
+            editBlock.append(btnComplete);
+            actionsBlock.append(editBlock);
+
+
+        }
+        else if (currentList === '.done-list') {
+            const btnDelete = document.createElement('button');
+            btnDelete.classList.add('tasks-list__item-actions-delete');
+            btnDelete.classList.add('button-card');
+            btnDelete.innerHTML = 'Delete';
+            // btnDelete.addEventListener('click', deleteCard); - сейчас она будет удалять из туду
+            // TODO Довести до ума и сделать универсальной либо сделать новую такую же функцию с удалением
+
+
+            editBlock.append(btnDelete);
+            actionsBlock.append(editBlock);
+
+        }
 
         // time 
 
@@ -123,12 +178,7 @@ function renderTodo(list = todos) {
         titlesBlock.append(desc);
         titlesBlock.append(user);
 
-        // actions 
-
-        editBlock.append(btnEdit);
-        editBlock.append(btnDelete);
-        actionsBlock.append(editBlock);
-        actionsBlock.append(btnJump);
+        // actions
         actionsBlock.append(timeCreate);
         
         // task 
@@ -139,12 +189,13 @@ function renderTodo(list = todos) {
         tasksList.append(task);
 
         })
+    renderCounter(todos, '.todos-counter');
+    renderCounter(done, '.done-counter');
+    renderCounter(progress, '.progress-counter');
 
-        
-    renderCounter();
 }
 
-function onConfirm()  {
+export function onConfirm()  {
     if (actionAdd) {
         let options = {
             hour: 'numeric',
@@ -158,6 +209,7 @@ function onConfirm()  {
             description: modalDesc.value,
             time: date.toLocaleString('ru', options),
             colorItem: color,
+            userName: currentUserName,
         }
 
         todos.push(todo);
@@ -166,15 +218,18 @@ function onConfirm()  {
         let currentTaskIdx = todos.findIndex(task => task.id === currentTaskEditId)
         todos[currentTaskIdx].titleTask = modalTitle.value;
         todos[currentTaskIdx].description = modalDesc.value;
-    }
-    renderTodo();
+        todos[currentTaskIdx].userName = currentUserName;    }
+    renderTask(todos,'.todos-list');
     modalWrapper.classList.remove('active');
     modalTitle.value = '';
     modalDesc.value = '';
 }
 
-btnAddTodo.addEventListener('click', addTodo);
-modalBtnConfirm.addEventListener('click', onConfirm);
+
+
+
+
+
 
 
 

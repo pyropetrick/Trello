@@ -39,9 +39,9 @@
                 <div class="item-todo">
     <div class="item-todo__header">
         <h2 class="item-todo__header-title">TODO:</h2>
-        <p class="item-todo__header-counter"></p>
+        <p class="item-todo__header-counter todos-counter">0</p>
     </div>
-    <ul class="item-todo__task-list tasks-list">
+    <ul class="item-todo__task-list tasks-list todos-list">
     </ul>
     <button class="item-todo__button-add-todo">Add todo</button>
     
@@ -49,24 +49,10 @@
                 <div class="progress">
     <div class="progress__header">
         <h2 class="header__title">in progress:</h2>
-        <div class="header__counter">0</div>
+        <div class="header__counter progress-counter">0</div>
     </div>
-    <ul class="progress-card__card-list">
-            <!-- <li class="progress-card__card-item">
-                    <div class="card-item__btn--wrapper">
-                        <button class="card-item__btn-back card-item__btn">BACK</button>
-                        <button class="card-item__btn-complt card-item__btn">COMPLETE</button>
-                    </div>
-                    <div class="card-item__descr--wrapper">
-                        <p class="card-item__title"><span class="card-item__stat-title">Title:</span> Ychi JS</p>
-                        <p class="card-item__descr"><span class="card-item__stat-descr">Description:</span> Bistra</p>
-                    </div>
+    <ul class="progress-list tasks-list">
 
-                    <div class="card-item__footer--wrapper">
-                        <p class="card-item__footer-user"><span class="card-item__footer-user-text">user: </span>Ewwel</p>
-                        <p class="card-item__footer-date"><span class="card-item__footer-user-date">date: </span>1/09/22</p>
-                    </div>
-        </li> -->
     </ul>
 </div>
 
@@ -75,24 +61,10 @@
                 <div class="progress">
     <div class="progress__header">
         <h2 class="header__title">done:</h2>
-        <div class="header__counter">0</div>
+        <div class="header__counter done-counter">0</div>
     </div>
-    <ul class="progress-card__card-list done-card__card-list">
-            <!-- <li class="progress-card__card-item">
-                    <div class="card-item__btn--wrapper">
-                        <button class="card-item__btn-back card-item__btn">BACK</button>
-                        <button class="card-item__btn-complt card-item__btn">COMPLETE</button>
-                    </div>
-                    <div class="card-item__descr--wrapper">
-                        <p class="card-item__title"><span class="card-item__stat-title">Title:</span> Ychi JS</p>
-                        <p class="card-item__descr"><span class="card-item__stat-descr">Description:</span> Bistra</p>
-                    </div>
+    <ul class="progress-card__card-list tasks-list done-list">
 
-                    <div class="card-item__footer--wrapper">
-                        <p class="card-item__footer-user"><span class="card-item__footer-user-text">user: </span>Ewwel</p>
-                        <p class="card-item__footer-date"><span class="card-item__footer-user-date">date: </span>1/09/22</p>
-                    </div>
-        </li> -->
     </ul>
     <button class="delete-all__btn">delete all</button>
 </div>
@@ -103,12 +75,11 @@
     
     <div class="modal__wrapper">
     <form>
-        <input class="modal__input-title" type="title" placeholder="Title">
+        <input class="modal__input-title" type="title" placeholder="Title" maxlength="17">
         <input class="modal__input-description" type="text" placeholder="Description">
     </form>
         <div class="modal__item">
             <select name="list" class="user__list">
-                <option value="user">Select user</option>
             </select>
             <div class="modal__buttons">
                 <button class="modal__btn-cancel action-button">Cancel</button>
@@ -126,11 +97,12 @@
 </div>
 
 
-    <script src="/index.4eb510cd.js" defer=""></script>
+
+
+
     <script src="/index.64ba4ff3.js" defer=""></script>
     <script src="/index.39feea23.js" defer=""></script>
-    <script src="/index.b31fbb2c.js" defer=""></script>
-    <script src="/index.4cada7ee.js" defer=""></script>
+    <script src="./js/init.js" defer=""></script>
     <script src="/index.18dbc454.js" defer=""></script>
 </body>
 </html>

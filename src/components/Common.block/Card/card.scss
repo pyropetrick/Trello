@@ -48,8 +48,6 @@
             background-color: #a0a0a0;
         }
     }
-    
-    
 
 }
 
@@ -58,6 +56,7 @@
     gap: 10px 0;
     overflow-y: auto;
     padding: 0 5px;
+    @include fontSize(13);
 
     &::-webkit-scrollbar {
         width: 2px;
@@ -67,7 +66,8 @@
     }
 
     &__item {
-        @include flexX(space-between);
+        @include flexXY(space-between, center);
+
         border: 2px solid black;
         border-radius: 5px;
         padding: 5px;
@@ -75,6 +75,8 @@
         &-titles {
             @include flexDir(column);
             gap: 15px;
+            width: 130px;
+
         }
 
         &-actions {
@@ -84,24 +86,17 @@
                 display: flex;
                 gap: 5px;
             }
-            &-edit {
-                border-radius: 5px;
-                border:none;
-                padding: 5px;
-                @include fontSize(14);
-                @include transitionAll;
+
+            &-edit, &-complete {
+
                 &:hover {
                     cursor: pointer;
                     background-color: $yellowColor;
 
                 }
             }
-            &-delete {
-                border-radius: 5px;
-                border:none;
-                padding: 5px;
-                @include fontSize(14);
-                @include transitionAll;
+            &-delete, &-back {
+
                 &:hover {
                     cursor: pointer;
                     background-color: $redColor;
@@ -109,12 +104,7 @@
                 
             }
             &-jump {
-                padding: 5px;
-                border-radius: 5px;
-                border: none;
                 align-self: flex-end;
-
-                @include transitionAll;
                 &:hover {
                     cursor: pointer;
                     background-color: #a0a0a0;
