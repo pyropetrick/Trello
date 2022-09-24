@@ -5,8 +5,8 @@ import {
     modalDesc,
     modalWrapper,
     currentUserName,
-    modalBtnCancel,
-    modalBtnConfirm,
+    warningBtnConfirm,
+    warningBtnCancel,
 } from '../modal/modal';
 
 let actionAdd = false;
@@ -66,6 +66,7 @@ function addCounterProgress (list){
         showWarning('Are you sure?')
     }
 }
+
 
 // function jumpToDone({ target }) {
 //     const item = target.parentNode.parentNode;
