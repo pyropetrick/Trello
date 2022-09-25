@@ -5,18 +5,15 @@
     background-color: #f4f4f4;
     font-family: $roboto;
 
-    @media (max-width: 1200px) {
-		width: 1024px;
+    @media (max-width: 1400px) {
         height: 100%;
 	}
 
-	@media (max-width: 767px) {
-		width: 771px;
+	@media (max-width: 1023px) {
         height: 100%;
 	}
 
-	@media (max-width: 479px) {
-		width: 100%;
+	@media (max-width: 320px) {
         height: 100%;
 	}
 
@@ -26,17 +23,18 @@
     display: flex;
     justify-content: space-between;
 
-    @media (max-width: 1200px) {
-		width: 1024px;
+    @media (max-width: 1400px) {
+		width: 100%;
 	}
 
-	@media (max-width: 767px) {
-		width: 771px;
+	@media (max-width: 1023px) {
+		width: 100%;
+		margin: 10px 0;
 	}
 
-	@media (max-width: 479px) {
+	@media (max-width: 320px) {
 		width: 100%;
         flex-wrap: wrap;
-        
+		margin: 10px 0;
 	}
 }

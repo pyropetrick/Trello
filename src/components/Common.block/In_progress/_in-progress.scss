@@ -7,16 +7,17 @@
     border-radius: 15px;
     height: 500px;
     background-color: $secondary;
+    margin: 20px;
 
-    @media (max-width: 1200px) {
-		width: 1024px;
+    @media (max-width: 1400px) {
+		width: 300px;
 	}
 
-	@media (max-width: 767px) {
-		width: 771px;
+	@media (max-width: 1023px) {
+		width: 300px;
 	}
 
-	@media (max-width: 479px) {
+	@media (max-width: 320px) {
 		width: 100%;
         margin: 10px;
 	}
@@ -29,7 +30,7 @@
         background-color: #F5F5F5;
         text-transform: uppercase;
         font-weight: 500;
-        margin-bottom: 15px;
+        margin: 0 0 30px;
     }
 }
 
@@ -89,6 +90,8 @@
     width: 100%;
     font-weight: 500;
     text-transform: capitalize;
+    margin: 10px 0;
+
     @include transitionAll;
     &:hover {
         cursor: pointer;

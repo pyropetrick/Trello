@@ -1,22 +1,21 @@
 .header {
     padding-top: 10px;
-    position: absolute;
     width: 100%;
 
-    @media (max-width: 1200px) {
-		width: 1024px;
-	}
-
-	@media (max-width: 767px) {
-		width: 771px;
-	}
-
-	@media (max-width: 479px) {
-		width: 100%;
-        margin: auto;
-        position: inherit;
-	}
-
+    @mixin mediaTablet {
+        @media screen and (max-width: 1199px) {
+            @content;
+            position: inherit;
+        }
+    }
+    
+    @mixin mediaMobile {
+        @media screen and (max-width: 1023px) {
+            @content;
+            position: inherit;
+        }
+    }
+    
 
 
     .container {

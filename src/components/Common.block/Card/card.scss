@@ -6,18 +6,20 @@
     height: 500px;
     padding: 15px;
     padding-bottom: 5px;
+    margin: 20px;
+
     @include flexDir(column);
     gap: 15px 0;
 
-    @media (max-width: 1200px) {
-		width: 1024px;
+    @media (max-width: 1400px) {
+		width: 300px;
 	}
 
-	@media (max-width: 767px) {
-		width: 771px;
+	@media (max-width: 1023px) {
+		width: 300px;
 	}
 
-	@media (max-width: 479px) {
+	@media (max-width: 320px) {
 		width: 100%;
         margin: 10px;
 	}
@@ -29,6 +31,7 @@
         background-color: #f4f4f4;
         border-radius: 10px;
         padding: 10px;
+        margin: 0 0 10px;
 
         &-counter {
             padding: 5px;

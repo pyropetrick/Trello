@@ -10,6 +10,19 @@
         position: absolute;
         top: 30%;
         left: 27%;
+
+        @media (max-width: 1400px) {
+            width: 500px;
+        }
+    
+        @media (max-width: 1023px) {
+            width: 500px;
+        }
+    
+        @media (max-width: 320px) {
+            width: 100%;
+        }
+    
             &.active {
                 display: flex;
 
@@ -19,21 +32,38 @@
     &__item {
         display: flex;
         margin: 0 5px;
+        @include mediaMobile {
+            width: 100%;
+        } 
     }
 
     &__buttons {
         display: flex;
         margin: 0 50px;
         gap: 0 10px;
+        @include mediaMobile {
+            width: 100%;
+            margin: auto;
+        } 
     }
 }
 
 .modal__btn-cancel {
+    @include mediaMobile {
+        width: 100%;
+        padding: 2px 2px;
+        font-size: 13px;
+    } 
     &:hover {
         background-color: red;
     }
 }
 .modal__btn-confirm {
+    @include mediaMobile {
+        width: 100%;
+        padding: 2px 2px;
+        font-size: 13px;
+    } 
     &:hover {
         background-color: $greenColor;
     }
@@ -45,6 +75,11 @@
     background-color: white;
     padding: 0 10px;
     margin: 0 5px;
+    @include mediaMobile {
+        width: 100%;
+        padding: 2px 2px;
+        font-size: 13px;
+    } 
 }
 
 .modal__input-title {
@@ -56,6 +91,9 @@
     text-align: center;
     margin: 15px 5px;
     padding: 5px;
+    @include mediaMobile {
+        width: 50%;
+    } 
 }
 
 .modal__input-description {
@@ -68,7 +106,12 @@
     text-align: center;
     margin: 0 5px 30px;
     padding: 40px;
+    @include mediaMobile {
+        width: 100%;
+    } 
+    
 }
+
 
 .warning {
     display: none;
@@ -85,15 +128,15 @@
     top: 40%;
     left: 50%;
 
-    @media (max-width: 1200px) {
-        width: 1024px;
+    @media (max-width: 1400px) {
+        width: 500px;
     }
 
-    @media (max-width: 767px) {
-        width: 771px;
+    @media (max-width: 1023px) {
+        width: 500px;
     }
 
-    @media (max-width: 479px) {
+    @media (max-width: 320px) {
         width: 100%;
     }
 
