@@ -22,18 +22,20 @@ export function addTodo() {
     showEditMenu();
 }
 
-function deleteAll (){
-    showWarning('Are you sure?')
-    warningBtnConfirm.addEventListener('click', () => {
-        done = [];
-        renderTask(done, '.done-list');
-        closeWarning()})
-    warningBtnCancel.addEventListener('click', () => {
-        closeWarning();
-    })
-}
+{
+    function deleteAll (){
+        showWarning('Are you sure?')
+        warningBtnConfirm.addEventListener('click', () => {
+            done = [];
+            renderTask(done, '.done-list');
+            closeWarning()})
+        warningBtnCancel.addEventListener('click', () => {
+            closeWarning();
+        })
+    }
 
-deleteAllBtn.addEventListener('click', deleteAll)
+    deleteAllBtn.addEventListener('click', deleteAll)
+}
 
 function randomRGB() {
     const r = Math.floor(Math.random() * (256)),
