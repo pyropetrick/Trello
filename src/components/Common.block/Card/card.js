@@ -13,13 +13,21 @@ let actionAdd = false;
 let currentTaskEditId = 0;
 const todos = [];
 const progress = [];
-const done = [];
+let done = [];
 const deleteAllBtn = document.querySelector('.delete-all__btn');
 export const btnAddTodo = document.querySelector('.item-todo__button-add-todo');
 export function addTodo() {
     actionAdd = true;
     showEditMenu();
 }
+
+
+// deleteAllBtn.addEventListener('click', showWarning('Are you really?'))
+
+warningBtnConfirm.addEventListener('click', ()=>{
+    done = [];
+    renderTask(done, '.done-list');
+})
 
 function randomRGB() {
     const r = Math.floor(Math.random() * (256)),
