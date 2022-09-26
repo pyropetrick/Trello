@@ -7,6 +7,7 @@ import {
     currentUserName,
     warningBtnConfirm,
     warningBtnCancel,
+    closeWarning,
 } from '../modal/modal';
 
 let actionAdd = false;
@@ -21,13 +22,18 @@ export function addTodo() {
     showEditMenu();
 }
 
+function deleteAll (){
+    showWarning('Are you sure?')
+    warningBtnConfirm.addEventListener('click', () => {
+        done = [];
+        renderTask(done, '.done-list');
+        closeWarning()})
+    warningBtnCancel.addEventListener('click', () => {
+        closeWarning();
+    })
+}
 
-// deleteAllBtn.addEventListener('click', showWarning('Are you really?'))
-
-warningBtnConfirm.addEventListener('click', ()=>{
-    done = [];
-    renderTask(done, '.done-list');
-})
+deleteAllBtn.addEventListener('click', deleteAll)
 
 function randomRGB() {
     const r = Math.floor(Math.random() * (256)),
@@ -81,10 +87,6 @@ function addCounterProgress (list){
         counter.innerHTML = list.length;
         showWarning('Are you sure?')
     }
-}
-
-const tryComplete = () => {
-    console.log('work')
 }
 
 function jumpToDone({ target }) {

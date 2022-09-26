@@ -26,6 +26,13 @@ export const showWarning = (text) => {
     warning.style.display = 'flex';
     
 }
+
+export const closeWarning = () => {
+    const warning = document.querySelector('.warning');
+    warning.style.display = 'none';
+    
+}
+
 export function setItem({ target }) {
     const indexSelect = target.value;
     currentUserName = target.children[indexSelect - 1].innerHTML;
