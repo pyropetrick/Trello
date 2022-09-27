@@ -22,8 +22,19 @@ export function addTodo() {
     showEditMenu();
 }
 
-
-    deleteAllBtn.addEventListener('click', deleteAll)
+{
+deleteAllBtn.addEventListener('click',()=>{
+if( done != 0){
+    showWarning('Are you sure?');
+}
+warningBtnConfirm.addEventListener('click', () => {
+        done = [];
+        renderTask(done, '.done-list');
+        closeWarning()});
+    warningBtnCancel.addEventListener('click', () => {
+        closeWarning();
+        })
+    })
 }
 
 function randomRGB() {
@@ -42,7 +53,7 @@ function deleteCard({target}) {
     renderTask(todos, '.todos-list');
 }
 
-function deleteCardDOne({target}) {
+function deleteCardDone({target}) {
     const card = target.parentNode.parentNode.parentNode
     const cardId = +card.getAttribute('id');
     const cardIdx = done.findIndex(({id}) => id === cardId);
@@ -66,18 +77,6 @@ function onEdit({target}) {
 function renderCounter(list, currentList) {
     let counter = document.querySelector(currentList);
     counter.innerText = list.length;
-}
-
-
-
-function addCounterProgress (list){
-    const counter = document.querySelector('.header__counter');
-    if (list.length <= 6){
-        counter.innerHTML = list.length;
-    } else {
-        counter.innerHTML = list.length;
-        showWarning('Are you sure?')
-    }
 }
 
 function jumpToDone({ target }) {
@@ -105,12 +104,28 @@ function jumpToProgress({ target }) {
     const item = target.parentNode.parentNode;
     const idItem = +item.getAttribute('id');
     const indexItem = todos.findIndex(({id}) => id === idItem);
-    progress.push(todos[indexItem])
-    todos.splice(indexItem, 1);
+    if (progress.length === 2){
+        showWarning('aaaa')
+        console.log('start')
+        warningBtnConfirm.addEventListener('click', jumpTest(indexItem));
+    }
+    else  {
+        jumpTest(indexItem);
+        console.log('end')
+    } 
+}
+
+function jumpTest(idx) {
+    progress.push(todos[idx])
+    todos.splice(idx, 1);
     renderTask(todos,'.todos-list');
     renderTask(progress, '.progress-list');
-
 }
+
+warningBtnCancel.addEventListener('click', closeWarning)
+
+
+
 
 function renderTask(list, currentList) {
     const tasksList = document.querySelector(currentList);
@@ -171,7 +186,7 @@ function renderTask(list, currentList) {
             btnJump.classList.add('tasks-list__item-actions-jump');
             btnJump.classList.add('button-card');
             btnJump.innerHTML = '>';
-            btnJump.addEventListener('click', jumpToProgress);
+            btnJump.addEventListener('click', jumpToProgress );
 
             editBlock.append(btnEdit);
             editBlock.append(btnDelete);
@@ -198,15 +213,13 @@ function renderTask(list, currentList) {
             editBlock.append(btnBack);
             editBlock.append(btnComplete);
             actionsBlock.append(editBlock);
-
-            addCounterProgress(progress);
         }
         else if (currentList === '.done-list') {
             const btnDelete = document.createElement('button');
             btnDelete.classList.add('tasks-list__item-actions-delete');
             btnDelete.classList.add('button-card');
             btnDelete.innerHTML = 'Delete';
-            btnDelete.addEventListener('click', deleteCardDOne); // сейчас она будет удалять из туду
+            btnDelete.addEventListener('click', deleteCardDone); // сейчас она будет удалять из туду
             // TODO Довести до ума и сделать универсальной либо сделать новую такую же функцию с удалением
 
 
