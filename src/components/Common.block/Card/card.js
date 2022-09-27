@@ -22,17 +22,6 @@ export function addTodo() {
     showEditMenu();
 }
 
-{
-    function deleteAll (){
-        showWarning('Are you sure?')
-        warningBtnConfirm.addEventListener('click', () => {
-            done = [];
-            renderTask(done, '.done-list');
-            closeWarning()})
-        warningBtnCancel.addEventListener('click', () => {
-            closeWarning();
-        })
-    }
 
     deleteAllBtn.addEventListener('click', deleteAll)
 }
