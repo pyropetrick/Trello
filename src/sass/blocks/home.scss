@@ -5,16 +5,13 @@
     background-color: #f4f4f4;
     font-family: $roboto;
 
-    @media (max-width: 1400px) {
-        height: 100%;
+	@include mediaTablet {
+		width: 500px;
+		height: 100%;
 	}
 
-	@media (max-width: 1023px) {
-        height: 100%;
-	}
-
-	@media (max-width: 320px) {
-        height: 100%;
+	@include mediaMobile {
+        width: 100%;
 	}
 
 }
@@ -23,16 +20,12 @@
     display: flex;
     justify-content: space-between;
 
-    @media (max-width: 1400px) {
-		width: 100%;
-	}
-
-	@media (max-width: 1023px) {
+	@include mediaTablet {
 		width: 100%;
 		margin: 10px 0;
 	}
 
-	@media (max-width: 320px) {
+	@include mediaMobile {
 		width: 100%;
         flex-wrap: wrap;
 		margin: 10px 0;

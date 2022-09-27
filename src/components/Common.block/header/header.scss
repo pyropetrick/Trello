@@ -2,18 +2,13 @@
     padding-top: 10px;
     width: 100%;
 
-    @mixin mediaTablet {
-        @media screen and (max-width: 1199px) {
-            @content;
-            position: inherit;
-        }
+    @include mediaTablet {
+        position: inherit;
     }
     
-    @mixin mediaMobile {
-        @media screen and (max-width: 1023px) {
-            @content;
-            position: inherit;
-        }
+    
+    @include mediaMobile {
+        position: inherit;
     }
     
 
@@ -27,15 +22,11 @@
         padding: 10px;
         background-color: #ececec;
 
-        @media (max-width: 1200px) {
+        @include mediaTablet {
             width: 1024px;
         }
     
-        @media (max-width: 767px) {
-            width: 771px;
-        }
-    
-        @media (max-width: 479px) {
+        @include mediaMobile {
             width: 100%;
             margin: auto;
         }
@@ -90,5 +81,5 @@
         font-family: $roboto;
         color: $darkColor;
     }
-}
     
+}

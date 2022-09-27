@@ -100,6 +100,7 @@ function renderTask(list, currentList) {
         const actionsBlock = document.createElement('div');
         actionsBlock.classList.add('tasks-list__item-actions');
 
+    
         // editing block
 
         const editBlock = document.createElement('div');
@@ -112,6 +113,7 @@ function renderTask(list, currentList) {
             btnEdit.classList.add('button-card');
             btnEdit.innerHTML = 'Edit';
             btnEdit.addEventListener('click', onEdit);
+
 
             const btnDelete = document.createElement('button');
             btnDelete.classList.add('tasks-list__item-actions-delete');
@@ -144,7 +146,7 @@ function renderTask(list, currentList) {
             btnComplete.classList.add('button-card');
             btnComplete.innerHTML = 'Complete';
             // TODO добавить слушатель события для кнопки complete
-
+            
             editBlock.append(btnBack);
             editBlock.append(btnComplete);
             actionsBlock.append(editBlock);

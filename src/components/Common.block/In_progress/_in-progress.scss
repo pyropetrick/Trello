@@ -9,18 +9,14 @@
     background-color: $secondary;
     margin: 20px;
 
-    @media (max-width: 1400px) {
-		width: 300px;
-	}
+    @include mediaTablet {
+        width: 300px;
+    }
 
-	@media (max-width: 1023px) {
-		width: 300px;
-	}
+    @include mediaMobile{
+        width: 100%;
+    }
 
-	@media (max-width: 320px) {
-		width: 100%;
-        margin: 10px;
-	}
 
     &__header {
         border: 2px solid #000;
@@ -98,3 +94,4 @@
         background-color: #a0a0a0;
     }
 }
+

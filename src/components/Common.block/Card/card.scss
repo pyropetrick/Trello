@@ -11,17 +11,12 @@
     @include flexDir(column);
     gap: 15px 0;
 
-    @media (max-width: 1400px) {
+    @include mediaTablet {
 		width: 300px;
 	}
 
-	@media (max-width: 1023px) {
-		width: 300px;
-	}
-
-	@media (max-width: 320px) {
-		width: 100%;
-        margin: 10px;
+	@include mediaMobile {
+        width: 100%;
 	}
 
 
