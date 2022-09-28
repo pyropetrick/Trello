@@ -2,9 +2,11 @@ export const modalTitle = document.querySelector('.modal__input-title');
 export const modalDesc = document.querySelector('.modal__input-description ');
 export const modalBtnConfirm = document.querySelector('.modal__btn-confirm');
 export const modalBtnCancel = document.querySelector('.modal__btn-cancel');
+export const warningBtnCancel = document.querySelector('.warning__btn-cancel');
+export const warningBtnConfirm = document.querySelector('.warning__btn-confirm');
 export const modalWrapper = document.querySelector('.modal__wrapper');
 export const userList = document.querySelector('.user__list');
-export let currentUserName = '';
+export let currentUserName = 'Bret';
 
 export const showEditMenu = () => {
     modalWrapper.classList.add('active');
@@ -24,10 +26,16 @@ export const showWarning = (text) => {
     warning.style.display = 'flex';
     
 }
+
+export const closeWarning = () => {
+    const warning = document.querySelector('.warning');
+    warning.style.display = 'none';
+    
+}
+
 export function setItem({ target }) {
     const indexSelect = target.value;
-    currentUserName = target.children[indexSelect - 1].innerHTML;
-    console.log(currentUserName);
+    currentUserName = target.children[indexSelect].innerHTML;
 }
 
 function retrieveUserList(users) {

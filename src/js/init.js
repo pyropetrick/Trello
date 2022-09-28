@@ -1,7 +1,10 @@
 import {
   onConfirm,
   btnAddTodo,
-  addTodo
+  addTodo,
+  deleteAllCards,
+  btnDeleteAll,
+  onWarningConfirm
 
 } from '../components/Common.block/Card/card';
 
@@ -13,13 +16,16 @@ import {
   modalBtnConfirm,
   setItem,
   userList,
+  warningBtnCancel,
+  closeWarning,
+  warningBtnConfirm,
 
 } from '../components/Common.block/modal/modal';
 
 
 export function init() {
   // add users list to modal
-  getListUsers().then(r => console.log(r));
+  getListUsers()
 
   // time updater
   setInterval(updateTrelloTime, 1000);
@@ -30,9 +36,17 @@ export function init() {
   // add modal confirm
   modalBtnConfirm.addEventListener('click', onConfirm);
 
+  warningBtnCancel.addEventListener('click', closeWarning);
+  warningBtnConfirm.addEventListener('click', onWarningConfirm);
+
   // add card
   btnAddTodo.addEventListener('click', addTodo);
 
+  // delete all cards
+  btnDeleteAll.addEventListener('click', deleteAllCards);
+
   // set item
   userList.addEventListener('change', setItem);
+
+
 }
