@@ -6,7 +6,7 @@ export const warningBtnCancel = document.querySelector('.warning__btn-cancel');
 export const warningBtnConfirm = document.querySelector('.warning__btn-confirm');
 export const modalWrapper = document.querySelector('.modal__wrapper');
 export const userList = document.querySelector('.user__list');
-export let currentUserName = '';
+export let currentUserName = 'Bret';
 
 export const showEditMenu = () => {
     modalWrapper.classList.add('active');
@@ -35,8 +35,7 @@ export const closeWarning = () => {
 
 export function setItem({ target }) {
     const indexSelect = target.value;
-    currentUserName = target.children[indexSelect - 1].innerHTML;
-    console.log(currentUserName);
+    currentUserName = target.children[indexSelect].innerHTML;
 }
 
 function retrieveUserList(users) {

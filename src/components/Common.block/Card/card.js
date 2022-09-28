@@ -10,33 +10,46 @@ import {
     closeWarning,
 } from '../modal/modal';
 
+// current states
+
 let actionAdd = false;
 let currentTaskEditId = 0;
+let currentTaskWarning = 0;
+let deleteAll = false;
+
+// arrays
+
 const todos = [];
 const progress = [];
 let done = [];
-const deleteAllBtn = document.querySelector('.delete-all__btn');
-export const btnAddTodo = document.querySelector('.item-todo__button-add-todo');
+
+// buttons
+
+export const btnAddTodo = document.querySelector('.card__button-add-todo');
+export const btnDeleteAll = document.querySelector('.card__button-delete-all')
+
+// function add todos
 export function addTodo() {
     actionAdd = true;
     showEditMenu();
 }
-
-{
-deleteAllBtn.addEventListener('click',()=>{
-if( done != 0){
-    showWarning('Are you sure?');
+// delete all done cards
+export function deleteAllCards() {
+    showWarning('Вы уверены что хотите удалить все выполненные задачи?');
+    deleteAll = true;
 }
-warningBtnConfirm.addEventListener('click', () => {
+// function confirm changes for warnings
+export function onWarningConfirm() {
+    if (deleteAll) {
         done = [];
         renderTask(done, '.done-list');
-        closeWarning()});
-    warningBtnCancel.addEventListener('click', () => {
-        closeWarning();
-        })
-    })
+    }
+    else {
+        addToProgressFromTodos(currentTaskWarning);
+    }
+    closeWarning()
 }
-
+// function generate random color
 function randomRGB() {
     const r = Math.floor(Math.random() * (256)),
           g = Math.floor(Math.random() * (256)),
@@ -44,7 +57,7 @@ function randomRGB() {
         color = `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`;
     return color
 }
-
+// delete functions for every cards
 function deleteCard({target}) {
     const card = target.parentNode.parentNode.parentNode
     const cardId = +card.getAttribute('id');
@@ -52,7 +65,6 @@ function deleteCard({target}) {
     todos.splice(cardIdx, 1);
     renderTask(todos, '.todos-list');
 }
-
 function deleteCardDone({target}) {
     const card = target.parentNode.parentNode.parentNode
     const cardId = +card.getAttribute('id');
@@ -60,7 +72,7 @@ function deleteCardDone({target}) {
     done.splice(cardIdx, 1);
     renderTask(done, '.done-list');
 }
-
+// edit function for task todos
 function onEdit({target}) {
     const item = target.parentNode.parentNode.parentNode;
     const itemId = +item.getAttribute('id');
@@ -73,12 +85,12 @@ function onEdit({target}) {
     showEditMenu();
 
 }
-
+// function render counters for list
 function renderCounter(list, currentList) {
     let counter = document.querySelector(currentList);
     counter.innerText = list.length;
 }
-
+// complete function for progress tasks
 function jumpToDone({ target }) {
     const item = target.parentNode.parentNode.parentNode;
     const idItem = +item.getAttribute('id');
@@ -88,7 +100,7 @@ function jumpToDone({ target }) {
     renderTask(progress,'.progress-list');
     renderTask(done, '.done-list');
 }
-
+// back function for progress tasks
 function jumpToDo({ target }) {
     const item = target.parentNode.parentNode.parentNode;
     const idItem = +item.getAttribute('id');
@@ -99,33 +111,29 @@ function jumpToDo({ target }) {
     renderTask(todos,'.todos-list');
 }
 
-
+// task go to progress functions
 function jumpToProgress({ target }) {
     const item = target.parentNode.parentNode;
     const idItem = +item.getAttribute('id');
     const indexItem = todos.findIndex(({id}) => id === idItem);
-    if (progress.length === 2){
-        showWarning('aaaa')
-        console.log('start')
-        warningBtnConfirm.addEventListener('click', jumpTest(indexItem));
+    if (progress.length >= 6){
+        deleteAll = false;
+        currentTaskWarning = indexItem
+        showWarning('Вы пытаетесь добавить 7 карточку в рабочую область. Вы уверены что справитесь с таким количеством задач ? ')
     }
     else  {
-        jumpTest(indexItem);
-        console.log('end')
+        addToProgressFromTodos(indexItem);
     } 
 }
-
-function jumpTest(idx) {
+function addToProgressFromTodos(idx) {
     progress.push(todos[idx])
     todos.splice(idx, 1);
     renderTask(todos,'.todos-list');
     renderTask(progress, '.progress-list');
+    closeWarning();
 }
 
-warningBtnCancel.addEventListener('click', closeWarning)
-
-
-
+// render function for 3 lists(todos, progress, done)
 
 function renderTask(list, currentList) {
     const tasksList = document.querySelector(currentList);
@@ -201,14 +209,12 @@ function renderTask(list, currentList) {
             btnBack.classList.add('button-card');
             btnBack.innerHTML = 'Back';
             btnBack.addEventListener('click', jumpToDo )
-            // TODO добавить слушатель события для кнопки back
 
             const btnComplete = document.createElement('button');
             btnComplete.classList.add('tasks-list__item-actions-complete');
             btnComplete.classList.add('button-card');
             btnComplete.innerHTML = 'Complete';
             btnComplete.addEventListener('click', jumpToDone)
-            // TODO добавить слушатель события для кнопки complete
 
             editBlock.append(btnBack);
             editBlock.append(btnComplete);
@@ -219,9 +225,8 @@ function renderTask(list, currentList) {
             btnDelete.classList.add('tasks-list__item-actions-delete');
             btnDelete.classList.add('button-card');
             btnDelete.innerHTML = 'Delete';
-            btnDelete.addEventListener('click', deleteCardDone); // сейчас она будет удалять из туду
-            // TODO Довести до ума и сделать универсальной либо сделать новую такую же функцию с удалением
-
+            btnDelete.addEventListener('click', deleteCardDone);
+            task.style.background = '#00ce1b';
 
             editBlock.append(btnDelete);
             actionsBlock.append(editBlock);
@@ -258,6 +263,7 @@ function renderTask(list, currentList) {
 
 }
 
+// confirm add task or edit changes
 export function onConfirm()  {
     if (actionAdd) {
         let options = {
@@ -281,7 +287,8 @@ export function onConfirm()  {
         let currentTaskIdx = todos.findIndex(task => task.id === currentTaskEditId)
         todos[currentTaskIdx].titleTask = modalTitle.value;
         todos[currentTaskIdx].description = modalDesc.value;
-        todos[currentTaskIdx].userName = currentUserName;    }
+        todos[currentTaskIdx].userName = currentUserName;
+    }
     renderTask(todos,'.todos-list');
     modalWrapper.classList.remove('active');
     modalTitle.value = '';

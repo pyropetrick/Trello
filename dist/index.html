@@ -36,37 +36,37 @@
     <section class="home">
         <div class="container">
             <div class="trello-list-cards">
-                <div class="item-todo">
-    <div class="item-todo__header">
-        <h2 class="item-todo__header-title">TODO:</h2>
-        <p class="item-todo__header-counter todos-counter">0</p>
+                <div class="item-todo card">
+    <div class="item-todo__header card__header">
+        <h2 class="item-todo__header-title card__header-title">TODO:</h2>
+        <p class="item-todo__header-counter todos-counter card__header-counter">0</p>
     </div>
-    <ul class="item-todo__task-list tasks-list todos-list">
+    <ul class="card__list tasks-list todos-list">
     </ul>
-    <button class="item-todo__button-add-todo">Add todo</button>
+    <button class="card__button-add-todo card__button">Add task</button>
     
 </div>
-                <div class="progress">
-    <div class="progress__header">
-        <h2 class="header__title">in progress:</h2>
-        <div class="header__counter progress-counter">0</div>
+                <div class="progress card">
+    <div class="progress__header card__header">
+        <h2 class="header__title card__header-title">in progress:</h2>
+        <div class="header__counter progress-counter card__header-counter">0</div>
     </div>
-    <ul class="progress-list tasks-list">
+    <ul class="progress-list tasks-list card__list">
 
     </ul>
 </div>
 
 
 
-                <div class="progress">
-    <div class="progress__header">
-        <h2 class="header__title">done:</h2>
-        <div class="item-todo__header-counter done-counter">0</div>
+                <div class="done card">
+    <div class="done__header card__header">
+        <h2 class="done__title card__header-title">done:</h2>
+        <div class="done-counter card__header-counter">0</div>
     </div>
-    <ul class="progress-card__card-list tasks-list done-list">
+    <ul class="card__list tasks-list done-list">
 
     </ul>
-    <button class="delete-all__btn">delete all</button>
+    <button class="card__button-delete-all card__button">Delete all</button>
 </div>
             </div>
         </div>
@@ -80,6 +80,7 @@
     </form>
         <div class="modal__item">
             <select name="list" class="user__list">
+                <option disabled="" value="0">Select user</option>
             </select>
             <div class="modal__buttons">
                 <button class="modal__btn-cancel action-button">Cancel</button>
@@ -102,7 +103,7 @@
 
     <script src="/index.64ba4ff3.js" defer=""></script>
     <script src="/index.39feea23.js" defer=""></script>
-    <script src="/index.43d43591.js" defer=""></script>
+    <script src="./js/init.js" defer=""></script>
     <script src="/index.18dbc454.js" defer=""></script>
 </body>
 </html>

@@ -4,8 +4,9 @@
     border-radius: 20px;
     display: none;
     flex-direction: column;
+
     padding: 20px 40px;
-    width: 500px;
+    width: 600px;
     background-color: rgba(#d8f2da, .5);
 
     position: absolute;
@@ -21,12 +22,14 @@
 
     &__item {
         display: flex;
-        margin: 0 5px;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        //margin: 0 5px;
     }
 
     &__buttons {
         display: flex;
-        margin: 0 50px;
         gap: 0 10px;
     }
 }
@@ -41,6 +44,7 @@
         background-color: $greenColor;
     }
 }
+
 
 .user__list {
     border: 1px solid black;
@@ -87,7 +91,22 @@
     position: absolute;
     top: 40%;
     left: 50%;
-
+    &__btn  {
+        &-cancel {
+            @include transitionAll;
+            &:hover {
+                background-color: $redColor;
+                cursor: pointer;
+            }
+        }
+        &-confirm {
+            @include transitionAll;
+            &:hover {
+                background-color: $greenColor;
+                cursor: pointer;
+            }
+        }
+    }
     &__text {
         text-align: center;
         @include fontSize(16);
@@ -99,6 +118,11 @@
         justify-content: center;
         align-items: center;
         gap: 0 10px;
-        
     }
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
