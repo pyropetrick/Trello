@@ -9,9 +9,9 @@
     width: 600px;
     background-color: rgba(#d8f2da, .5);
 
-    position: absolute;
-    top: 30%;
-    left: 27%;
+    position: fixed;
+    top: 40%;
+    left: 35%;
 
         &.active {
         display: flex;
@@ -88,9 +88,9 @@
     flex-direction: column;
     gap: 25px 0;
 
-    position: absolute;
+    position: fixed;
     top: 40%;
-    left: 50%;
+    left: 35%;
     &__btn  {
         &-cancel {
             @include transitionAll;

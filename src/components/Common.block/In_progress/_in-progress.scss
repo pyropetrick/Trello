@@ -1,28 +1,3 @@
-.progress-card {
-
-    &__card-item{
-        border: 2px solid #000;
-        border-radius: 5px;
-        padding: 10px;
-        background-color: #F5F5F5;
-        margin-bottom: 10px;
-    }
-}
-
-.progress-card__card-list{
-    overflow-y: auto;
-    gap: 10px;
-    padding: 0 5px;
-    margin-bottom: 15px;
-
-    &::-webkit-scrollbar {
-        width: 2px;
-    }
-    &::-webkit-scrollbar-thumb {
-        background-color: black;
-    }
-}
-
 .card-item {
     &__btn {
 
@@ -40,5 +15,12 @@
             }
         }
     }
+}
+
+.progress-actions {
+    gap: 60px;
+}
+.done-actions {
+    gap: 60px;
 }
 

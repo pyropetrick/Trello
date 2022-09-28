@@ -57,6 +57,18 @@ function randomRGB() {
         color = `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`;
     return color
 }
+// function generate random id
+function randomId() {
+    const firstNumber = Math.floor(Math.random() * 10),
+        secondNumber = Math.floor(Math.random() * 10),
+        thirdNumber = Math.floor(Math.random() * 10),
+        fourNumber = Math.floor(Math.random() * 10),
+        fiveNumber = Math.floor(Math.random() * 10),
+        sixNumber = Math.floor(Math.random() * 10),
+        id = `${firstNumber}${secondNumber}${thirdNumber}${fourNumber}${fiveNumber}${sixNumber}`
+    return id;
+
+}
 // delete functions for every cards
 function deleteCard({target}) {
     const card = target.parentNode.parentNode.parentNode
@@ -119,7 +131,7 @@ function jumpToProgress({ target }) {
     if (progress.length >= 6){
         deleteAll = false;
         currentTaskWarning = indexItem
-        showWarning('Вы пытаетесь добавить 7 карточку в рабочую область. Вы уверены что справитесь с таким количеством задач ? ')
+        showWarning(`Вы пытаетесь добавить ${progress.length + 1} карточку в рабочую область. Вы уверены что справитесь с таким количеством задач ? `)
     }
     else  {
         addToProgressFromTodos(indexItem);
@@ -216,6 +228,8 @@ function renderTask(list, currentList) {
             btnComplete.innerHTML = 'Complete';
             btnComplete.addEventListener('click', jumpToDone)
 
+            actionsBlock.classList.add('progress-actions');
+
             editBlock.append(btnBack);
             editBlock.append(btnComplete);
             actionsBlock.append(editBlock);
@@ -227,6 +241,7 @@ function renderTask(list, currentList) {
             btnDelete.innerHTML = 'Delete';
             btnDelete.addEventListener('click', deleteCardDone);
             task.style.background = '#00ce1b';
+            actionsBlock.classList.add('done-actions');
 
             editBlock.append(btnDelete);
             actionsBlock.append(editBlock);
@@ -272,8 +287,9 @@ export function onConfirm()  {
         }
         let date = new Date();
         let color = randomRGB();
+        let idItem = randomId();
         let todo = {
-            id: Date.now(),
+            id: +idItem,
             titleTask: modalTitle.value,
             description: modalDesc.value,
             time: date.toLocaleString('ru', options),

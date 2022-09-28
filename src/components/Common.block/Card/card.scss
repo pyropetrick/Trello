@@ -76,9 +76,30 @@
             width: 130px;
 
         }
+        &-title {
+            height: 24px;
+            padding: {
+                top: 5px;
+                bottom: 5px;
+            };
+        }
+        &-desc {
+            padding: {
+                top: 5px;
+                bottom: 5px;
+            };
+        }
+        &-user {
+            height: 24px;
+            padding: {
+                top: 5px;
+                bottom: 5px;
+            };
+        }
 
         &-actions {
             @include flexDir(column);
+            justify-content: space-between;
             gap: 15px;
             &-editing {
                 display: flex;
