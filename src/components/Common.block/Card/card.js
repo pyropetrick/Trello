@@ -135,7 +135,7 @@ function renderTask(list, currentList) {
 
         }
         else if (currentList === '.progress-list') {
-            const btnBack = document.createElement('button')
+            const btnBack = document.createElement('button');
             btnBack.classList.add('tasks-list__item-actions-back');
             btnBack.classList.add('button-card');
             btnBack.innerHTML = 'Back';
@@ -181,12 +181,13 @@ function renderTask(list, currentList) {
         titlesBlock.append(user);
 
         // actions
-        actionsBlock.append(timeCreate);
+        //actionsBlock.append(timeCreate);
         
         // task 
         task.append(titlesBlock);
         task.append(actionsBlock);
-
+        task.append(timeCreate);
+ 
         // list 
         tasksList.append(task);
 

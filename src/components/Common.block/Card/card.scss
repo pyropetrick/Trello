@@ -64,11 +64,12 @@
     }
 
     &__item {
-        @include flexXY(space-between, center);
+        @include flexXY(space-between, start);
 
         border: 2px solid black;
         border-radius: 5px;
         padding: 5px;
+        min-height: 130px;
 
         &-titles {
             @include flexDir(column);
