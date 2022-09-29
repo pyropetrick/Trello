@@ -1,7 +1,17 @@
 .header {
-    padding-top: 10px;
     position: absolute;
+    padding-top: 10px;
     width: 100%;
+
+    @include mediaTablet {
+        position: absolute;
+    }
+    
+    
+    @include mediaMobile {
+        position: absolute;
+    }
+    
 
 
     .container {
@@ -12,11 +22,12 @@
         border-radius: 5px;
         padding: 10px;
         background-color: #ececec;
+
     }
+
     &__logo {
         &-link {
-            //width: 36px;
-            //height: 36px;
+
             @include flexY(center);
             gap: 0 10px;
 
@@ -62,5 +73,5 @@
         font-family: $roboto;
         color: $darkColor;
     }
-}
     
+}

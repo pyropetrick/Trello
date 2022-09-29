@@ -4,9 +4,30 @@
 
     background-color: #f4f4f4;
     font-family: $roboto;
+
+	@include mediaTablet {
+	}
+
+	@include mediaMobile {
+		padding-top: 100px;
+		height: 100%;
+        width: 100%;
+	}
+
 }
 
 .trello-list-cards {
     display: flex;
     justify-content: space-between;
+
+	@include mediaTablet {
+		width: 100%;
+		margin: 10px 0;
+	}
+
+	@include mediaMobile {
+		width: 100%;
+        flex-wrap: wrap;
+		gap: 15px;
+	}
 }

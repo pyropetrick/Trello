@@ -183,6 +183,7 @@ function renderTask(list, currentList) {
         const actionsBlock = document.createElement('div');
         actionsBlock.classList.add('tasks-list__item-actions');
 
+    
         // editing block
 
         const editBlock = document.createElement('div');
@@ -195,6 +196,7 @@ function renderTask(list, currentList) {
             btnEdit.classList.add('button-card');
             btnEdit.innerHTML = 'Edit';
             btnEdit.addEventListener('click', onEdit);
+
 
             const btnDelete = document.createElement('button');
             btnDelete.classList.add('tasks-list__item-actions-delete');
@@ -216,7 +218,7 @@ function renderTask(list, currentList) {
 
         }
         else if (currentList === '.progress-list') {
-            const btnBack = document.createElement('button')
+            const btnBack = document.createElement('button');
             btnBack.classList.add('tasks-list__item-actions-back');
             btnBack.classList.add('button-card');
             btnBack.innerHTML = 'Back';
@@ -229,7 +231,6 @@ function renderTask(list, currentList) {
             btnComplete.addEventListener('click', jumpToDone)
 
             actionsBlock.classList.add('progress-actions');
-
             editBlock.append(btnBack);
             editBlock.append(btnComplete);
             actionsBlock.append(editBlock);
@@ -267,7 +268,7 @@ function renderTask(list, currentList) {
         // task 
         task.append(titlesBlock);
         task.append(actionsBlock);
-
+ 
         // list 
         tasksList.append(task);
 

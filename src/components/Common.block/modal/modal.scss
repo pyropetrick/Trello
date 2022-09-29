@@ -1,45 +1,70 @@
 .modal {
     &__wrapper {
-    border: 1px solid rgb(35, 185, 95); 
-    border-radius: 20px;
-    display: none;
-    flex-direction: column;
-
-    padding: 20px 40px;
-    width: 600px;
-    background-color: rgba(#d8f2da, .5);
-
-    position: fixed;
-    top: 40%;
-    left: 35%;
-
+        border: 1px solid rgb(35, 185, 95);
+        border-radius: 20px;
+        display: none;
+        flex-direction: column;
+        padding: 20px 40px;
+        width: 600px;
+        background-color: rgba(#d8f2da, .5);
+        position: fixed;
+        top: 40%;
+        left: 35%;
         &.active {
-        display: flex;
+            display: flex;
+
+        }
+
+        @include mediaTablet {
+            margin-top: 20px;
         }
     
-    }
- 
+        @include mediaMobile {
+            width: 100%;
+            left: 0;
+        }
+
+        }
 
     &__item {
         display: flex;
+        margin: 0 5px;
         justify-content: center;
         align-items: center;
         gap: 40px;
-        //margin: 0 5px;
+
+        @include mediaMobile {
+            width: 100%;
+        }
     }
 
     &__buttons {
         display: flex;
         gap: 0 10px;
+
+        @include mediaMobile {
+            width: 100%;
+            margin: auto;
+        } 
     }
 }
 
 .modal__btn-cancel {
+    @include mediaMobile {
+        width: 100%;
+        padding: 2px 2px;
+        font-size: 13px;
+    } 
     &:hover {
         background-color: red;
     }
 }
 .modal__btn-confirm {
+    @include mediaMobile {
+        width: 100%;
+        padding: 2px 2px;
+        font-size: 13px;
+    } 
     &:hover {
         background-color: $greenColor;
     }
@@ -52,6 +77,12 @@
     background-color: white;
     padding: 0 10px;
     margin: 0 5px;
+
+    @include mediaMobile {
+        width: 100%;
+        padding: 2px 2px;
+        font-size: 13px;
+    } 
 }
 
 .modal__input-title {
@@ -63,6 +94,10 @@
     text-align: center;
     margin: 15px 5px;
     padding: 5px;
+
+    @include mediaMobile {
+        width: 50%;
+    } 
 }
 
 .modal__input-description {
@@ -75,7 +110,13 @@
     text-align: center;
     margin: 0 5px 30px;
     padding: 40px;
+
+    @include mediaMobile {
+        width: 100%;
+    } 
+    
 }
+
 
 .warning {
     display: none;
@@ -90,7 +131,16 @@
 
     position: fixed;
     top: 40%;
-    left: 35%;
+    left: 50%;
+
+    @include mediaTablet {
+        width: 500px;
+    }
+
+    @include mediaMobile {
+        width: 100%;
+    }
+
     &__btn  {
         &-cancel {
             @include transitionAll;
@@ -125,4 +175,8 @@ form {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @include mediaMobile {
+        width: 100%;
+    }
 }

@@ -2,6 +2,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+    
 }
 
 // Убираем внутренние отступы
@@ -70,8 +71,14 @@ select {
 
 .container {
   margin: 0 auto;
-  width: 1200px;  
-  
-  
-}
+  width: 1200px;
 
+  @include mediaTablet {
+    width: 984px;
+  }
+
+  @include mediaMobile {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
