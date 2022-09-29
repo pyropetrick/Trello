@@ -19,13 +19,25 @@ import {
   warningBtnCancel,
   closeWarning,
   warningBtnConfirm,
+  retrieveUserList,
 
 } from '../components/Common.block/modal/modal';
+
+import {getFromStorage} from "./storage";
+import {body, inputSwitcher} from '../components/Common.block/header/darkModeSwitcher';
 
 
 export function init() {
   // add users list to modal
-  getListUsers()
+  if (getFromStorage('users')) {
+    retrieveUserList(getFromStorage('users'))
+  } else  {
+    getListUsers()
+  }
+  if (getFromStorage('theme')) {
+    body.classList.add('dark-mode');
+    inputSwitcher.checked = true;
+  }
 
   // time updater
   setInterval(updateTrelloTime, 1000);

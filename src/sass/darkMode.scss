@@ -1,0 +1,138 @@
+.dark-mode {
+  .home {
+    background-color: $darkBg;
+  }
+  .header {
+    .container {
+      background-color: $darkItemBg;
+      color: $textWhite;
+      border: none;
+    }
+    &__time {
+      background-color: $darkInput;
+      color: $textWhite;
+
+      &-frame {
+        border : none;
+        background-color: inherit;
+      }
+    }
+  }
+  .card {
+    background-color: $darkItemBg;
+    border: none;
+    color: $textWhite;
+    font-weight: bold;
+
+    &__header {
+      background-color: $darkInput;
+      color: $textWhite;
+      border: none;
+    }
+    &__button {
+      background-color: $darkInput;
+      color: $textWhite;
+      font-weight: bold;
+      border: none;
+      &-add-todo {
+        &:hover {
+          background-color: #1A8917;
+        }
+      }
+      &-delete-all {
+        &:hover {
+          background-color: #d21404;
+        }
+      }
+    }
+  }
+  .button-card {
+    background-color: $darkInput;
+    color: $textWhite;
+  }
+
+  .tasks-list {
+
+    &__item {
+      &-actions {
+        &-edit {
+          &:hover {
+            background-color: #0079bf;
+          }
+        }
+        &-delete {
+          &:hover {
+            background-color: $redColor;
+          }
+        }
+        &-jump {
+          &:hover {
+            background-color: #545454;
+          }
+        }
+        &-back {
+          &:hover {
+            background-color: #545454;
+          }
+        }
+        &-complete {
+          &:hover {
+            background-color: rgba(255, 165, 0, 1);
+          }
+        }
+      }
+    }
+
+  }
+
+  .modal__wrapper {
+    background-color: $darkItemBg;
+  }
+  .modal__input-title {
+    background-color: $darkInput;
+    color: $textWhite;
+
+  }
+  .modal__input-description {
+    background-color: $darkInput;
+    color: $textWhite;
+  }
+  .modal__btn-cancel {
+    background-color: $darkInput;
+    color: $textWhite;
+    &:hover {
+      background-color: #d21404;
+    }
+  }
+  .modal__btn-confirm {
+    background-color: $darkInput;
+    color: $textWhite;
+    &:hover {
+      background-color: #1A8917;
+    }
+  }
+  .user__list {
+    background-color: $darkInput;
+    color: white;
+  }
+  .warning {
+    background-color: $darkItemBg;
+    color: $textWhite;
+    &__btn {
+      &-cancel {
+        background-color: $darkInput;
+        color: $textWhite;
+        &:hover {
+          background-color: #d21404;
+        }
+      }
+      &-confirm {
+        background-color: $darkInput;
+        color: $textWhite;
+        &:hover {
+          background-color: #1A8917;
+        }
+      }
+    }
+  }
+}

@@ -27,7 +27,7 @@ let done = [];
 // buttons
 
 export const btnAddTodo = document.querySelector('.card__button-add-todo');
-export const btnDeleteAll = document.querySelector('.card__button-delete-all')
+export const btnDeleteAll = document.querySelector('.card__button-delete-all');
 
 export const initStorage = () => {
     if (getFromStorage('todos')) {

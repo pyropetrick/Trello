@@ -142,7 +142,12 @@
             }
             &-time {
                 align-self: flex-end;
+                padding: {
+                    top: 5px;
+                    bottom: 5px;
+                }
             }
         }
     }
 }
+

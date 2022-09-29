@@ -40,7 +40,7 @@ export function setItem({ target }) {
     currentUserName = target.children[indexSelect].innerHTML;
 }
 
-function retrieveUserList(users) {
+export function retrieveUserList(users) {
     users.forEach(({id, username}) => {
         const userOption = document.createElement("option");
         userOption.classList.add('optionUser');
@@ -67,7 +67,7 @@ export async function getListUsers() {
         if (response.ok) {
             const users = await response.json();
             retrieveUserList(users);
-            // addToStorage({key: 'users', value: users})
+            addToStorage({key: 'users', value: users})
             console.log('finish');
         }
         else {
