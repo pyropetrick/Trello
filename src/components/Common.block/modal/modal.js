@@ -1,3 +1,5 @@
+import {addToStorage} from "../../../js/storage";
+
 export const modalTitle = document.querySelector('.modal__input-title');
 export const modalDesc = document.querySelector('.modal__input-description ');
 export const modalBtnConfirm = document.querySelector('.modal__btn-confirm');
@@ -48,8 +50,6 @@ function retrieveUserList(users) {
     })
 }
 
-
-
 export function updateTrelloTime () {
     let date = new Date();
     let options = {
@@ -67,6 +67,7 @@ export async function getListUsers() {
         if (response.ok) {
             const users = await response.json();
             retrieveUserList(users);
+            // addToStorage({key: 'users', value: users})
             console.log('finish');
         }
         else {

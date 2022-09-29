@@ -4,8 +4,8 @@ import {
   addTodo,
   deleteAllCards,
   btnDeleteAll,
-  onWarningConfirm
-
+  onWarningConfirm,
+  initStorage
 } from '../components/Common.block/Card/card';
 
 import {
@@ -47,6 +47,8 @@ export function init() {
 
   // set item
   userList.addEventListener('change', setItem);
+
+  initStorage();
 
 
 }

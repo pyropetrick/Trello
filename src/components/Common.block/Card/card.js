@@ -9,6 +9,7 @@ import {
     warningBtnCancel,
     closeWarning,
 } from '../modal/modal';
+import {addToStorage, deleteFromStorage,getFromStorage} from "../../../js/storage";
 
 // current states
 
@@ -19,8 +20,8 @@ let deleteAll = false;
 
 // arrays
 
-const todos = [];
-const progress = [];
+let todos = [];
+let progress = [];
 let done = [];
 
 // buttons
@@ -28,6 +29,20 @@ let done = [];
 export const btnAddTodo = document.querySelector('.card__button-add-todo');
 export const btnDeleteAll = document.querySelector('.card__button-delete-all')
 
+export const initStorage = () => {
+    if (getFromStorage('todos')) {
+        todos = getFromStorage('todos');
+        renderTask(todos, '.todos-list');
+    }
+    if (getFromStorage('progress')) {
+        progress = getFromStorage('progress');
+        renderTask(progress, '.progress-list');
+    }
+    if (getFromStorage('done')) {
+        done = getFromStorage('done');
+        renderTask(done, '.done-list');
+    }
+}
 // function add todos
 export function addTodo() {
     actionAdd = true;
@@ -43,6 +58,7 @@ export function onWarningConfirm() {
     if (deleteAll) {
         done = [];
         renderTask(done, '.done-list');
+        deleteFromStorage('done');
     }
     else {
         addToProgressFromTodos(currentTaskWarning);
@@ -76,6 +92,7 @@ function deleteCard({target}) {
     const cardIdx = todos.findIndex(({id}) => id === cardId);
     todos.splice(cardIdx, 1);
     renderTask(todos, '.todos-list');
+    todos.length ? addToStorage({key:'todos', value: todos}) : deleteFromStorage('todos');
 }
 function deleteCardDone({target}) {
     const card = target.parentNode.parentNode.parentNode
@@ -83,6 +100,7 @@ function deleteCardDone({target}) {
     const cardIdx = done.findIndex(({id}) => id === cardId);
     done.splice(cardIdx, 1);
     renderTask(done, '.done-list');
+    done.length ? addToStorage({key:'done', value: done}) : deleteFromStorage('done');
 }
 // edit function for task todos
 function onEdit({target}) {
@@ -111,6 +129,8 @@ function jumpToDone({ target }) {
     progress.splice(indexItem, 1);
     renderTask(progress,'.progress-list');
     renderTask(done, '.done-list');
+    progress.length ? addToStorage({key:'progress', value: progress}) : deleteFromStorage('progress');
+    addToStorage({key:'done', value: done});
 }
 // back function for progress tasks
 function jumpToDo({ target }) {
@@ -121,6 +141,8 @@ function jumpToDo({ target }) {
     progress.splice(indexItem, 1);
     renderTask(progress,'.progress-list');
     renderTask(todos,'.todos-list');
+    progress.length ? addToStorage({key:'progress', value: progress}) : deleteFromStorage('progress');
+    addToStorage({key:'todos', value: todos});
 }
 
 // task go to progress functions
@@ -142,6 +164,8 @@ function addToProgressFromTodos(idx) {
     todos.splice(idx, 1);
     renderTask(todos,'.todos-list');
     renderTask(progress, '.progress-list');
+    todos.length ? addToStorage({key:'todos', value: todos}) : deleteFromStorage('todos');
+    addToStorage({key:'progress', value: progress});
     closeWarning();
 }
 
@@ -300,13 +324,16 @@ export function onConfirm()  {
 
         todos.push(todo);
 
+
     } else {
         let currentTaskIdx = todos.findIndex(task => task.id === currentTaskEditId)
         todos[currentTaskIdx].titleTask = modalTitle.value;
         todos[currentTaskIdx].description = modalDesc.value;
         todos[currentTaskIdx].userName = currentUserName;
+
     }
     renderTask(todos,'.todos-list');
+    addToStorage({key:'todos', value: todos});
     modalWrapper.classList.remove('active');
     modalTitle.value = '';
     modalDesc.value = '';

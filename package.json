@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/pyropetrick/Trello/issues"
   },
-  "author": "Pavel Chernenko <pavel.chernenko97@gmail.com>",
+  "author": "Pavel Chernenko <pavel.chernenko97@gmail.com>, Konstantin Ostorovich <Ewwel@inbox.ru>, Sevil Charapakha <cherepahasivi@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.2",
