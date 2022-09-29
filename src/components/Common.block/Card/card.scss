@@ -4,20 +4,19 @@
     background-color: $secondary;
     width: 300px;
     height: 500px;
-    padding: 15px;
-    padding-bottom: 5px;
-    margin: 20px;
+    padding: 15px 15px 5px;
 
     @include flexDir(column);
     gap: 15px 0;
 
     @include mediaTablet {
-		width: 300px;
-	}
+        width: 300px;
+    }
 
-	@include mediaMobile {
+    @include mediaMobile {
         width: 100%;
-	}
+        gap: 15px;
+    }
 
 
     &__header {
@@ -28,6 +27,7 @@
         padding: 10px;
         margin: 0 0 10px;
         text-transform: uppercase;
+
         &-counter {
             padding: 5px;
             @include fontSize(20);
@@ -35,6 +35,7 @@
         }
 
     }
+
     &__button {
         background-color: rgba(#f4f4f4, 1.0);
         border-radius: 8px;
@@ -45,18 +46,20 @@
             bottom: 5px;
         };
         @include transitionAll;
+
         &-add-todo:hover {
             cursor: pointer;
             background-color: #1A8917;
             color: white;
         }
+
         &-delete-all:hover {
             cursor: pointer;
             background-color: #D21404;
             color: white;
         }
     }
-
+}
 .tasks-list {
     @include flexDir(column);
     gap: 10px 0;
@@ -77,7 +80,6 @@
         border: 2px solid black;
         border-radius: 5px;
         padding: 5px;
-        min-height: 130px;
 
         &-titles {
             @include flexDir(column);
@@ -129,7 +131,7 @@
                     cursor: pointer;
                     background-color: $redColor;
                 }
-                
+
             }
             &-jump {
                 align-self: flex-end;

@@ -62,15 +62,21 @@ export function updateTrelloTime () {
 
 export async function getListUsers() {
     console.log('start');
-    const response = await fetch('https://jsonplaceholder.typicode.com/users');
-    if (response.ok) {
-        const users = await response.json();
-        retrieveUserList(users);
-        console.log('finish');
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users');
+        if (response.ok) {
+            const users = await response.json();
+            retrieveUserList(users);
+            console.log('finish');
+        }
+        else {
+            console.log(response);
+        }
     }
-    else {
-        console.log(response);
+    catch {
+        console.log('error')
     }
+
 
 }
 

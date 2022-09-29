@@ -263,12 +263,11 @@ function renderTask(list, currentList) {
         titlesBlock.append(user);
 
         // actions
-        //actionsBlock.append(timeCreate);
+        actionsBlock.append(timeCreate);
         
         // task 
         task.append(titlesBlock);
         task.append(actionsBlock);
-        task.append(timeCreate);
  
         // list 
         tasksList.append(task);

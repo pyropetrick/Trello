@@ -71,7 +71,14 @@ select {
 
 .container {
   margin: 0 auto;
-  width: 1200px;  
+  width: 1200px;
 
-  @include container;
+  @include mediaTablet {
+    width: 984px;
+  }
+
+  @include mediaMobile {
+    width: 100%;
+    padding: 0 20px;
+  }
 }

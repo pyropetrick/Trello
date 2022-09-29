@@ -21,6 +21,7 @@
     
         @include mediaMobile {
             width: 100%;
+            left: 0;
         }
 
         }
@@ -174,4 +175,8 @@ form {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @include mediaMobile {
+        width: 100%;
+    }
 }

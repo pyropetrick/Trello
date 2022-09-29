@@ -1,14 +1,15 @@
 .header {
+    position: absolute;
     padding-top: 10px;
     width: 100%;
 
     @include mediaTablet {
-        position: inherit;
+        position: absolute;
     }
     
     
     @include mediaMobile {
-        position: inherit;
+        position: absolute;
     }
     
 
@@ -22,20 +23,11 @@
         padding: 10px;
         background-color: #ececec;
 
-        @include mediaTablet {
-            width: 1024px;
-        }
-    
-        @include mediaMobile {
-            width: 100%;
-            margin: auto;
-        }
     }
 
     &__logo {
         &-link {
-            //width: 36px;
-            //height: 36px;
+
             @include flexY(center);
             gap: 0 10px;
 
